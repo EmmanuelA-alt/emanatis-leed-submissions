@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galatsi Plaster — LEED Platinum Submission Package v4.1</title>
+<style>
+  :root {
+    --green: #2d7a4f; --brown: #8b6f3f; --blue: #3260a8; --red: #c0392b;
+    --dark: #0d3b2e; --light: #f5f5f5; --yellow: #fffde6; --yellow-border: #e6c200;
+    --orange: #d4883a; --purple: #6b4ba8;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1a1a; margin: 0; padding: 0; background: #f0f2f5; line-height: 1.5; }
+  
+  .cover { background: var(--dark); color: white; padding: 80px 40px; text-align: center; }
+  .cover h1 { font-size: 32px; margin: 0 0 8px 0; letter-spacing: 1px; }
+  .cover h2 { font-size: 18px; font-weight: normal; color: #a8d4c4; margin: 0 0 24px 0; }
+  .cover .meta { font-size: 13px; color: #8ab4a0; line-height: 1.8; }
+  .cover .version-badge { display: inline-block; background: white; color: var(--dark); padding: 4px 14px; border-radius: 4px; font-weight: bold; font-size: 14px; margin-bottom: 16px; }
+  
+  .toc { max-width: 900px; margin: 30px auto; background: white; border-radius: 8px; padding: 30px 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .toc h2 { color: var(--dark); font-size: 18px; margin: 0 0 16px 0; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 8px; font-size: 14px; }
+  .toc a { color: var(--dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .toc .toc-tag { display: inline-block; font-size: 10px; padding: 1px 8px; border-radius: 3px; margin-left: 8px; color: white; font-weight: bold; }
+  
+  .content { max-width: 900px; margin: 0 auto; padding: 0 20px 40px; }
+  .section { background: white; border-radius: 8px; padding: 30px 40px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .section-header { display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid; }
+  .section-header h2 { margin: 0; font-size: 20px; }
+  .section-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; color: white; font-weight: bold; font-size: 16px; margin-right: 12px; flex-shrink: 0; }
+  
+  .s-contract .section-header { border-color: var(--dark); }
+  .s-contract .section-num { background: var(--dark); }
+  .s-materials .section-header { border-color: var(--brown); }
+  .s-materials .section-num { background: var(--brown); }
+  .s-execution .section-header { border-color: var(--orange); }
+  .s-execution .section-num { background: var(--orange); }
+  .s-mockup .section-header { border-color: var(--purple); }
+  .s-mockup .section-num { background: var(--purple); }
+  .s-qc .section-header { border-color: var(--blue); }
+  .s-qc .section-num { background: var(--blue); }
+  .s-waste .section-header { border-color: var(--green); }
+  .s-waste .section-num { background: var(--green); }
+  .s-hse .section-header { border-color: var(--red); }
+  .s-hse .section-num { background: var(--red); }
+  .s-leed .section-header { border-color: var(--dark); }
+  .s-leed .section-num { background: var(--dark); }
+  .s-docs .section-header { border-color: var(--green); }
+  .s-docs .section-num { background: var(--green); }
+  .s-standards .section-header { border-color: #666; }
+  .s-standards .section-num { background: #666; }
+  
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 14px; }
+  th { background: #f0f0f0; text-align: left; padding: 8px 10px; font-weight: bold; border-bottom: 2px solid #ccc; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 8px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+  td.qty { font-weight: bold; white-space: nowrap; }
+  td.center { text-align: center; }
+  td.prohibited { color: var(--red); font-weight: bold; }
+  .leed-badge { display: inline-block; background: var(--green); color: white; font-size: 10px; padding: 2px 8px; border-radius: 3px; margin: 1px; white-space: nowrap; }
+  .leed-badge-crit { background: var(--red); }
+  .note-box { background: var(--yellow); border-left: 4px solid var(--yellow-border); padding: 10px 14px; margin-top: 12px; font-size: 12px; line-height: 1.6; }
+  .note-box strong { color: #997a00; }
+  .info-box { background: #e8f0fe; border-left: 4px solid var(--blue); padding: 10px 14px; margin-top: 12px; font-size: 12px; line-height: 1.6; }
+  .info-box strong { color: #1a4a8a; }
+  .warn-box { background: #fef0f0; border-left: 4px solid var(--red); padding: 10px 14px; margin-top: 12px; font-size: 12px; line-height: 1.6; }
+  .warn-box strong { color: var(--red); }
+  
+  h3 { font-size: 15px; margin: 20px 0 10px 0; }
+  p { font-size: 13px; margin: 6px 0 12px 0; }
+  
+  .signature-block { border: 2px dashed #ccc; padding: 24px; margin-top: 20px; border-radius: 6px; }
+  .signature-block h3 { margin: 0 0 16px 0; font-size: 14px; color: var(--dark); }
+  .sig-row { display: flex; gap: 40px; margin-top: 20px; }
+  .sig-col { flex: 1; }
+  .sig-line { border-bottom: 1px solid #333; height: 30px; margin-bottom: 6px; }
+  .sig-label { font-size: 12px; color: #666; }
+  
+  .total-order { background: var(--dark); color: white; border-radius: 8px; padding: 20px; margin-top: 20px; }
+  .total-order h3 { color: white; margin: 0 0 12px 0; font-size: 15px; }
+  .total-order table { color: white; }
+  .total-order table th { background: #145a45; color: white; border-bottom: 1px solid #2a8a6a; }
+  .total-order table td { border-bottom: 1px solid #1a4a38; color: white; }
+  .total-order td.qty { color: #6bd4a8; }
+  
+  .coat-card { border-radius: 6px; padding: 16px; margin-bottom: 16px; }
+  .coat-green { border-left: 4px solid var(--green); background: #f6fcf9; }
+  .coat-brown { border-left: 4px solid var(--brown); background: #faf7f2; }
+  .coat-blue { border-left: 4px solid var(--blue); background: #f5f8fd; }
+  .coat-card h3 { margin: 0 0 10px 0; font-size: 15px; }
+  .coat-green h3 { color: var(--green); }
+  .coat-brown h3 { color: var(--brown); }
+  .coat-blue h3 { color: var(--blue); }
+  
+  .point-card { display: inline-block; background: var(--green); color: white; padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 13px; margin-right: 8px; margin-bottom: 8px; }
+  
+  .footer { text-align: center; padding: 30px; font-size: 11px; color: #888; }
+  
+  @media print {
+    body { background: white; }
+    .section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .toc { page-break-after: always; }
+    .content { max-width: 100%; padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="version-badge">v4.1 — 2026-06-24</div>
+  <h1>GALATSI PLASTER</h1>
+  <h2>Complete LEED Platinum v4 BD+C: NC Submission Package</h2>
+  <div class="meta">
+    <strong>Project ID: 1000216750</strong> &nbsp;|&nbsp; <strong>Title: Emanatis Residence Galatsi</strong><br>
+    Rating System: LEED v4 BD+C: NC &nbsp;|&nbsp; Target: Platinum<br>
+    Project: Ipeirou 22, Galatsi, Athens, Greece<br>
+    Scope: 1,012 m² — Basement, Storage, Stairwell, Hallways<br>
+    Three-Coat Cement-Lime Plaster System &nbsp;|&nbsp; Site-Mixed &nbsp;|&nbsp; No Polymer Additives<br>
+    Prepared by: Orpheus Aurelius, Chief of Staff — Emanatis Group
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h2>TABLE OF CONTENTS</h2>
+  <ol>
+    <li><a href="#s1">Contract & Scope of Work</a><span class="toc-tag" style="background:var(--dark);">Contract</span></li>
+    <li><a href="#s2">Materials, Products & Mix Design</a><span class="toc-tag" style="background:var(--brown);">Materials</span></li>
+    <li><a href="#s3">Execution Requirements</a><span class="toc-tag" style="background:var(--orange);">Execution</span></li>
+    <li><a href="#s4">Mock-Up Panel & Testing Protocol</a><span class="toc-tag" style="background:var(--purple);">Testing</span></li>
+    <li><a href="#s5">Quality Control & Acceptance Criteria</a><span class="toc-tag" style="background:var(--blue);">QC</span></li>
+    <li><a href="#s6">Waste Management & LEED Logging</a><span class="toc-tag" style="background:var(--green);">Waste</span></li>
+    <li><a href="#s7">Health, Safety & Site Operations</a><span class="toc-tag" style="background:var(--red);">H&S</span></li>
+    <li><a href="#s8">LEED Credits, Prerequisites & Points</a><span class="toc-tag" style="background:var(--dark);">LEED</span></li>
+    <li><a href="#s9">Documentation Package — Pre & Post Work</a><span class="toc-tag" style="background:var(--green);">Docs</span></li>
+    <li><a href="#s10">Standards Referenced</a><span class="toc-tag" style="background:#666;">Standards</span></li>
+    <li><a href="#s11">Step-by-Step Process Map — Contract to Completion</a><span class="toc-tag" style="background:#d4883a;">Process</span></li>
+    <li><a href="#s12">Signatures & Acceptance</a><span class="toc-tag" style="background:var(--dark);">Sign</span></li>
+  </ol>
+</div>
+
+<div class="content">
+
+<!-- ========== SECTION 1: CONTRACT ========== -->
+<div class="section s-contract" id="s1">
+<div class="section-header"><span class="section-num">1</span><h2>CONTRACT & SCOPE OF WORK</h2></div>
+
+<h3>1.1 Project Identification</h3>
+<table>
+  <tr><td style="width:25%;"><strong>Project</strong></td><td>Emanatis Luxury Living PC — Galatsi Development, Ipeirou 22, Galatsi, Athens 11146</td></tr>
+  <tr><td><strong>LEED Project ID</strong></td><td>1000216750</td></tr>
+  <tr><td><strong>LEED Title</strong></td><td>Emanatis Residence Galatsi</td></tr>
+  <tr><td><strong>Rating System</strong></td><td>LEED v4 BD+C: NC — Target: Platinum</td></tr>
+  <tr><td><strong>Client</strong></td><td>Emanatis Luxury Living PC, represented by Emmanuel Anassis (Chairman) &amp; Dimitris Skendo (Project Manager)</td></tr>
+  <tr><td><strong>Contractor</strong></td><td>[Plastering Contractor Name / Company / VAT / License]</td></tr>
+  <tr><td><strong>Date</strong></td><td>[Date of Signature]</td></tr>
+  <tr><td><strong>Start Date</strong></td><td>29 June 2026</td></tr>
+  <tr><td><strong>Completion Date</strong></td><td>TBA</td></tr>
+</table>
+
+<h3>1.2 Scope of Work</h3>
+<table>
+  <tr><th>Area</th><th>m²</th><th>Rate (€/m²)</th><th>Subtotal</th></tr>
+  <tr><td>Stairwell (σκάλες)</td><td>96</td><td>€18</td><td>€1,728</td></tr>
+  <tr><td>Mechanical room (κλιματοστάσιο)</td><td>96</td><td>€18</td><td>€1,728</td></tr>
+  <tr><td>Ceiling — beam infill (ταβάνι)</td><td>56</td><td>€18</td><td>€1,008</td></tr>
+  <tr><td>Walls (τοίχοι)</td><td>108</td><td>€18</td><td>€1,944</td></tr>
+  <tr><td>Beam infill (δοκαράκι)</td><td>29</td><td>€18</td><td>€522</td></tr>
+  <tr><td>Storage (αποθήκη)</td><td>144</td><td>€15</td><td>€2,160</td></tr>
+  <tr><td>Corridors (διάδρομοι)</td><td>43</td><td>€15</td><td>€645</td></tr>
+  <tr><td>Room (δωμάτιο)</td><td>29</td><td>€15</td><td>€435</td></tr>
+  <tr><td>Living area (σαλόνι υπογείου)</td><td>50</td><td>€15</td><td>€750</td></tr>
+  <tr><td>Basement ceiling (ταβάνι υπογείου)</td><td>120</td><td>€15</td><td>€1,800</td></tr>
+  <tr style="font-weight:bold;background:#f0f0f0;"><td>SUBTOTAL A (€18/m²)</td><td>626</td><td></td><td>€11,268</td></tr>
+  <tr style="font-weight:bold;background:#f0f0f0;"><td>SUBTOTAL B (€15/m²)</td><td>386</td><td></td><td>€5,790</td></tr>
+  <tr style="font-weight:bold;background:var(--dark);color:white;"><td>TOTAL</td><td>1,012 m²</td><td></td><td>€16,000</td></tr>
+</table>
+
+<p><strong>Work includes:</strong> All labor, tools, and equipment for site-mixed three-coat cement-lime plaster (sobas) on prepared substrates — scratch coat (10mm) + brown coat (12mm) + finish coat (4mm) = 26mm total. Surface preparation per §3, mesh and corner bead installation per §3, waste sorting per §6, curing per §3.</p>
+
+<p><strong>Work excludes:</strong> Paint/coatings, waterproofing membranes, thermal/acoustic insulation, structural concrete repair (Class C substrates per §3).</p>
+
+<p><strong>Timeline:</strong> Start 29 June 2026 — Completion TBA. Estimated duration: 1.5–2 months of active plastering.</p>
+
+<p><strong>Materials supplied by Client:</strong> All materials per §2 — cement (Lafarge Heracles), lime putty (CL 90-S), sand 0/4, marble dust. Purchased by Emanatis, delivered to site.</p>
+
+<p><strong>Materials supplied by Contractor:</strong> Mixing water, fiberglass mesh, corner beads, expansion joint material, bonding slurry materials. Contractor to confirm materials on site before start.</p>
+
+<h3>1.3 Payment Terms</h3>
+<p>Total contract value: <strong>€16,000</strong> (firm fixed price). Payment schedule: [e.g., 30% on contract signing + 40% at midpoint inspection + 30% on final acceptance per §5.2]. All payments subject to satisfactory inspection by PM or Chairman.</p>
+
+<h3>1.4 LEED Documentation Cooperation (Contractual Obligation)</h3>
+<p>The Contractor acknowledges that this project is pursuing LEED Platinum v4 BD+C: NC certification (Project ID: 1000216750 — Emanatis Residence Galatsi). The Contractor is contractually obligated to:</p>
+<table>
+  <tr><td style="width:3%;">a)</td><td>Submit all pre-work documentation listed in §9.1 BEFORE any plastering work begins.</td></tr>
+  <tr><td>b)</td><td>Maintain the daily waste log (§6) — signed weekly by PM. Failure to maintain the log constitutes a breach.</td></tr>
+  <tr><td>c)</td><td>Permit and facilitate third-party ISO 17025 / ESYD accredited lab testing (§5.1) — including mock-up panel (§4), compressive strength cubes, and bond pull-off tests.</td></tr>
+  <tr><td>d)</td><td>Submit all post-work documentation (§9.2) within 7 days of plastering completion.</td></tr>
+  <tr><td>e)</td><td>Allow photographic documentation of all stages — substrate preparation, material storage, mixing, application, curing, waste management — for LEED IAQ and waste evidence.</td></tr>
+  <tr><td>f)</td><td>Comply with the Construction IAQ Management Plan (§7.5) — including HVAC duct sealing, HEPA vacuum / wet sweeping only, and mist curing protocol.</td></tr>
+</table>
+
+<h3>1.5 Prohibited Materials — Penalty Clause</h3>
+<table>
+  <tr><th>Prohibited Material</th><th>Consequence if Found on Site</th></tr>
+  <tr><td>Revinex (NEOTEX copolymer emulsion) or any polymer additive</td><td>Immediate removal from site at Contractor's cost. Full cost of replacement plaster materials (if applied) borne by Contractor. Any LEED certification delay or credit loss attributable to polymer use = Contractor liability.</td></tr>
+  <tr><td>SikaFiber or any polypropylene/polymer fibers</td><td>Same as above.</td></tr>
+  <tr><td>SBR / latex / VAE / EVA bonding agents or additives</td><td>Same as above.</td></tr>
+  <tr><td>Solvent-based primers or sealers</td><td>Same as above.</td></tr>
+</table>
+
+<h3>1.6 Curing Protocol Compliance</h3>
+<p>Contractor must follow the curing protocol in §3.7 (mist cure 2–3× daily for first 3 days, damp burlap if RH &lt;40%, no plastering 11:00–16:00 in peak summer). Failure to maintain curing is a quality defect and grounds for rejection under §5.2.</p>
+
+<h3>1.7 Acceptance</h3>
+<p>Final acceptance per §5.2 quality criteria. No cracks &gt;0.3mm, no hollow areas, flatness ≤3mm per 2m, plumb ≤3mm per 2m, no efflorescence, bond strength ≥0.3 N/mm².</p>
+
+<h3>1.8 Governing Law</h3>
+<p>This contract is governed by the laws of the Hellenic Republic. Any disputes shall be resolved in the courts of Athens.</p>
+</div>
+
+<!-- ========== SECTION 2: MATERIALS ========== -->
+<div class="section s-materials" id="s2">
+<div class="section-header"><span class="section-num">2</span><h2>MATERIALS, PRODUCTS & MIX DESIGN</h2></div>
+
+<h3>2.1 Layer 1 — Scratch Coat (Πεταχτό) — 10mm — CS III Target</h3>
+<div class="coat-card coat-green">
+<table>
+  <tr><th style="width:20%;">Material</th><th>Product</th><th>Standard</th><th>Quantity</th><th>Mix Ratio (vol.)</th></tr>
+  <tr><td>Grey cement</td><td>Lafarge Heracles (CEM II/B-LL 32.5N preferred)</td><td>EN 197-1</td><td class="qty">125 bags × 25kg (3.1 t)</td><td class="center">1 part</td></tr>
+  <tr><td>Lime putty</td><td>Ασβεστόπολτος CL 90-S (Epichromatiki / Emporodomiki)</td><td>EN 459-1</td><td class="qty">160 bags × 19kg (3.0 t)</td><td class="center">1 part</td></tr>
+  <tr><td>Sand 0/4</td><td>AMETRON (75% quarry + 25% recycled C&D)</td><td>EN 13139</td><td class="qty">17 tonnes</td><td class="center">5 parts</td></tr>
+  <tr><td>Water</td><td>Potable</td><td>EN 1008</td><td class="qty">~1,500 L</td><td class="center">To workability</td></tr>
+  <tr><td>Fibers</td><td colspan="4" class="prohibited">NONE</td></tr>
+  <tr><td>Polymer additives</td><td colspan="4" class="prohibited">NONE</td></tr>
+</table>
+</div>
+<div class="note-box">
+<strong>Application:</strong> Mix cement + sand dry → add lime putty → add water slowly → mix 3–5 min. Apply 10mm. Roughen surface with scratcher. Cure 24h min. Lime putty contains ~40% water — reduce added water accordingly. <span class="leed-badge">EQc2</span> <span class="leed-badge">MRc2</span> <span class="leed-badge">MRc3</span>
+</div>
+
+<h3>2.2 Layer 2 — Brown Coat (Λάσπωμα) — 12mm — CS II Target</h3>
+<div class="coat-card coat-brown">
+<table>
+  <tr><th style="width:20%;">Material</th><th>Product</th><th>Standard</th><th>Quantity</th><th>Mix Ratio (vol.)</th></tr>
+  <tr><td>Grey cement</td><td>Lafarge Heracles (CEM II/B-LL 32.5N preferred)</td><td>EN 197-1</td><td class="qty">130 bags × 25kg (3.2 t)</td><td class="center">1 part</td></tr>
+  <tr><td>Lime putty</td><td>Ασβεστόπολτος CL 90-S</td><td>EN 459-1</td><td class="qty">165 bags × 19kg (3.1 t)</td><td class="center">1 part</td></tr>
+  <tr><td>Sand 0/4</td><td>AMETRON (75% quarry + 25% recycled C&D)</td><td>EN 13139</td><td class="qty">22 tonnes</td><td class="center">6 parts</td></tr>
+  <tr><td>Water</td><td>Potable</td><td>EN 1008</td><td class="qty">~1,800 L</td><td class="center">To workability</td></tr>
+  <tr><td>Fibers</td><td colspan="4" class="prohibited">NONE</td></tr>
+  <tr><td>Polymer additives</td><td colspan="4" class="prohibited">NONE</td></tr>
+</table>
+</div>
+<div class="note-box">
+<strong>Application:</strong> Same mixing procedure. Apply 12mm. Straighten to line with rule. Cure 24h min before finish coat. Strength ≤ scratch coat (CS II < CS III) — correct gradient maintained.
+</div>
+
+<h3>2.3 Layer 3 — Finish Coat (Μαρμάρωμα) — 4mm — ≤ CS II Target</h3>
+<div class="coat-card coat-blue">
+<table>
+  <tr><th style="width:20%;">Material</th><th>Product</th><th>Standard</th><th>Quantity</th><th>Mix Ratio (vol.)</th></tr>
+  <tr><td>White cement</td><td>Lafarge Heracles White</td><td>EN 197-1</td><td class="qty">55 bags × 25kg (1.4 t)</td><td class="center">1 part</td></tr>
+  <tr><td>Lime putty</td><td>Ασβεστόπολτος CL 90-S</td><td>EN 459-1</td><td class="qty">65 bags × 19kg (1.2 t)</td><td class="center">1 part</td></tr>
+  <tr><td>Marble dust</td><td>Μαρμαρόσκονη (100% natural, Attica)</td><td>EN 13139</td><td class="qty">5 tonnes</td><td class="center">5 parts</td></tr>
+  <tr><td>Water</td><td>Potable</td><td>EN 1008</td><td class="qty">~600 L</td><td class="center">To workability</td></tr>
+  <tr><td>Sand / fibres / polymers</td><td colspan="4" class="prohibited">NONE — marble dust only. No recycled sand. No fibres.</td></tr>
+</table>
+</div>
+<div class="note-box">
+<strong>Application:</strong> Use WHITE cement for clean finish (traditional μαρμάρωμα). Marble dust replaces sand — smooth, dense surface. Apply 4mm, smooth with marble float. Strength ≤ brown coat — correct gradient maintained. <span class="leed-badge">EQc2</span> <span class="leed-badge">MRc3</span> (marble by-product, pre-consumer recycled)
+</div>
+
+<h3>2.4 Total Material Order</h3>
+<div class="total-order">
+<table>
+  <tr><th>Material</th><th>Product</th><th>Quantity</th><th>Weight</th></tr>
+  <tr><td>Grey cement (25kg bags)</td><td>Lafarge Heracles</td><td class="qty">255 bags</td><td>6.3 t</td></tr>
+  <tr><td>White cement (25kg bags)</td><td>Lafarge Heracles White</td><td class="qty">55 bags</td><td>1.4 t</td></tr>
+  <tr><td>Lime putty (19kg bags)</td><td>Ασβεστόπολτος CL 90-S</td><td class="qty">390 bags</td><td>7.4 t</td></tr>
+  <tr><td>Sand 0/4</td><td>AMETRON (EN 13139)</td><td class="qty">39 tonnes</td><td>39 t</td></tr>
+  <tr><td>Marble dust</td><td>Μαρμαρόσκονη (EN 13139, Attica)</td><td class="qty">5 tonnes</td><td>5 t</td></tr>
+  <tr><td colspan="2">TOTAL ~60 tonnes (including 5% procurement contingency: ~63 t max)</td><td class="qty"></td><td></td></tr>
+</table>
+</div>
+
+<h3>2.5 Prohibited Materials (Non-Negotiable)</h3>
+<table>
+  <tr><th style="width:3%;"></th><th>Material</th><th>Reason</th></tr>
+  <tr><td class="prohibited">✕</td><td class="prohibited">Revinex (NEOTEX copolymer emulsion) or any polymer additive</td><td>Voids LEED EQc2 inherently non-emitting classification. Triggers VOC testing. Risks Platinum.</td></tr>
+  <tr><td class="prohibited">✕</td><td class="prohibited">SikaFiber or any polypropylene/polymer fibers</td><td>Organic material risks LEED EQc2. Crack control per mesh + curing.</td></tr>
+  <tr><td class="prohibited">✕</td><td class="prohibited">Recycled C&D sand in finish coat</td><td>Purity risk. Marble dust only.</td></tr>
+  <tr><td class="prohibited">✕</td><td class="prohibited">SBR / latex / VAE / EVA bonding agents</td><td>Polymer-based — voids LEED classification.</td></tr>
+  <tr><td class="prohibited">✕</td><td class="prohibited">Solvent-based primers or sealers</td><td>VOC > LEED limits. Cementitious slurry only.</td></tr>
+</table>
+</div>
+
+<!-- ========== SECTION 3: EXECUTION ========== -->
+<div class="section s-execution" id="s3">
+<div class="section-header"><span class="section-num">3</span><h2>EXECUTION REQUIREMENTS</h2></div>
+
+<h3>3.1 Pre-Plaster Substrate Survey (Mandatory)</h3>
+<table>
+  <tr><th>Class</th><th>Condition</th><th>Action</th></tr>
+  <tr><td style="background:#e8f5e9;">A</td><td>Sound concrete/masonry, dry, no cracks</td><td>Clean + dampen → ready for scratch coat</td></tr>
+  <tr><td style="background:#fffde6;">B</td><td>Minor cracks <0.3mm, light efflorescence</td><td>Repair cracks, wire-brush efflorescence, apply bonding slurry</td></tr>
+  <tr><td style="background:#fef0f0;">C</td><td>Cracks >0.3mm, water damage, hollow areas</td><td>Structural engineer assessment. Repair BEFORE plastering.</td></tr>
+</table>
+<p>Joint survey by PM (Dimitris) + plasterer. Photograph each area + mark class zones on sketch. <strong>LEED SSp1 deliverable.</strong></p>
+
+<h3>3.2 Surface Preparation</h3>
+<table>
+  <tr><th style="width:5%;">#</th><th>Action</th><th>Standard</th></tr>
+  <tr><td>1</td><td>Remove loose material, dust, efflorescence, paint, oil, grease</td><td>Wire brush / low-pressure water wash</td></tr>
+  <tr><td>2</td><td>Repair cracks & defects (Class B/C)</td><td>Per structural engineer</td></tr>
+  <tr><td>3</td><td>Dampen substrate — no standing water</td><td>SSD condition</td></tr>
+  <tr><td>4</td><td>Apply bonding slurry if substrate smooth/dense</td><td>1:1 cement:water or 1:0.5:2 cement:lime:sand</td></tr>
+  <tr><td>5</td><td>Install corner beads at ALL external corners</td><td>Galvanized steel ≥25% recycled or PVC</td></tr>
+  <tr><td>6</td><td>Install fiberglass mesh (alkali-resistant)</td><td>At corners, edges, openings, substrate transitions</td></tr>
+  <tr><td>7</td><td>Install expansion joints</td><td>Max 6m on walls, at structural joints, floor-wall junctions</td></tr>
+</table>
+
+<h3>3.3 Bonding Agent</h3>
+<table>
+  <tr><th>Type</th><th>Specification</th></tr>
+  <tr><td><strong>PREFERRED:</strong> Cementitious slurry</td><td>1:1 cement:water or 1:0.5:2 cement:lime:sand. Spatterdash or brush coat. Inherently non-emitting.</td></tr>
+  <tr><td>ALTERNATIVE: SBR-free acrylic</td><td>VOC ≤50 g/L (SCAQMD Rule 1168). CDPH v1.2 or AgBB compliant. Requires VOC test report.</td></tr>
+  <tr><td class="prohibited">PROHIBITED: Solvent-based / epoxy</td><td>Voids EQc2 classification.</td></tr>
+</table>
+
+<h3>3.4 Rebar, Mesh & Expansion Joints</h3>
+<table>
+  <tr><th>Item</th><th>Spec</th><th>Placement</th></tr>
+  <tr><td>Corner beads</td><td>Galvanized steel (≥25% recycled) or PVC</td><td>All external corners</td></tr>
+  <tr><td>Fiberglass mesh</td><td>Alkali-resistant, EN 13696</td><td>Corners, edges, openings, material transitions</td></tr>
+  <tr><td>Expansion joints</td><td>Max 6m intervals</td><td>Walls, structural joints, floor-wall junctions</td></tr>
+</table>
+
+<h3>3.5 Application Sequence</h3>
+<table>
+  <tr><th>Coat</th><th>Thickness</th><th>Cure Time</th><th>Key Requirement</th></tr>
+  <tr><td>Scratch (πεταχτό)</td><td>10mm</td><td>24h min</td><td>Rough surface for mechanical key</td></tr>
+  <tr><td>Brown (λάσπωμα)</td><td>12mm</td><td>24h min</td><td>Straighten to line, flat but not smooth</td></tr>
+  <tr><td>Finish (μαρμάρωμα)</td><td>4mm</td><td>28 days before paint</td><td>Smooth with marble float. pH <10, moisture <8% before paint</td></tr>
+</table>
+
+<h3>3.6 Weather & Work Stoppage Rules</h3>
+<table>
+  <tr><th>Condition</th><th>Limit</th><th>Action</th></tr>
+  <tr><td>Ambient temp >35°C</td><td class="prohibited">STOP</td><td>Flash drying risk</td></tr>
+  <tr><td>Substrate temp >40°C</td><td class="prohibited">STOP</td><td>Mist-cool substrate first</td></tr>
+  <tr><td>Ambient temp <5°C</td><td class="prohibited">STOP</td><td>Lime carbonation stops</td></tr>
+  <tr><td>Forecast <2°C within 24h</td><td class="prohibited">STOP</td><td>Frost damage</td></tr>
+  <tr><td>Wind >30 km/h</td><td class="prohibited">STOP</td><td>Accelerated drying + dust</td></tr>
+  <tr><td>Rain (actual or forecast <4h)</td><td class="prohibited">STOP</td><td>Cover fresh work</td></tr>
+  <tr><td>Peak heat 11:00–16:00</td><td>Avoid</td><td>Prefer 06:00-11:00 or 17:00-20:00</td></tr>
+</table>
+
+<h3>3.7 Curing Protocol — Athens Summer (30-38°C, 30-45% RH)</h3>
+<table>
+  <tr><th>Period</th><th>Action</th></tr>
+  <tr><td>Days 1–3</td><td>Mist cure 2–3× daily (morning, midday, evening)</td></tr>
+  <tr><td>Days 4–7</td><td>Mist cure 1–2× daily</td></tr>
+  <tr><td>If RH <40%</td><td>Increase mist frequency + damp burlap on critical surfaces</td></tr>
+  <tr><td>Before paint</td><td>Wait 28 days minimum. Test pH <10, moisture <8%</td></tr>
+</table>
+
+<h3>3.8 Sequencing Dependencies</h3>
+<table>
+  <tr><th>Before Plastering</th><th>After Plastering</th></tr>
+  <tr><td>Structural repairs complete</td><td>28-day cure → paint can begin</td></tr>
+  <tr><td>Waterproofing installed (below-grade)</td><td>pH <10 + moisture <8% → paint</td></tr>
+  <tr><td>HVAC ducts & grilles sealed</td><td>Dust settled → HVAC unsealed</td></tr>
+  <tr><td>MEP rough-ins complete</td><td>Waste log submitted → LEED closed</td></tr>
+  <tr><td>Substrate survey signed off</td><td>Photos + test results → GBCI submission</td></tr>
+</table>
+
+<h3>3.9 Material Delivery, Storage & Handling</h3>
+<table>
+  <tr><th>Material</th><th>Storage Requirement</th></tr>
+  <tr><td>Cement (grey + white)</td><td>Dry, covered, off ground on pallets. Protect from moisture. FIFO.</td></tr>
+  <tr><td>Lime putty</td><td>Original sealed packaging. 5–35°C. Protect from frost and sun. Shelf life: 18 months.</td></tr>
+  <tr><td>Sand / marble dust</td><td>Covered from rain. On hard standing or tarpaulin.</td></tr>
+  <tr><td>Fiberglass mesh</td><td>Rolls flat, protected from UV. Do not fold.</td></tr>
+  <tr><td>Corner beads / metal trim</td><td>Under cover. Protect from moisture.</td></tr>
+</table>
+</div>
+
+<!-- ========== SECTION 4: MOCK-UP ========== -->
+<div class="section s-mockup" id="s4">
+<div class="section-header"><span class="section-num">4</span><h2>MOCK-UP PANEL & TESTING PROTOCOL</h2></div>
+
+<h3>4.1 Purpose</h3>
+<p>The mock-up panel verifies that the specified materials, mix ratios, application technique, and curing protocol produce plaster meeting all quality acceptance criteria (§5.2) before production work begins. It also serves as the physical benchmark against which all production work is visually compared.</p>
+
+<h3>4.2 Mock-Up Panel Requirements</h3>
+<table>
+  <tr><th>Requirement</th><th>Specification</th></tr>
+  <tr><td>Size</td><td>Minimum 2m × 2m on each substrate type present: (a) concrete wall, (b) masonry/brick wall, (c) concrete beam infill (δοκαράκι). If only one substrate type exists in quantity, one 2m × 2m panel is acceptable with Chairman approval.</td></tr>
+  <tr><td>Location</td><td>Basement wall representative of in-situ conditions. Approved mock-up remains on site throughout plastering as the acceptance benchmark.</td></tr>
+  <tr><td>Application</td><td>All three coats (scratch + brown + finish), full thickness (26mm), using the EXACT materials, mix ratios, mixing procedure, tools, and curing protocol specified in this document.</td></tr>
+  <tr><td>Cure period</td><td>28 days minimum. Full curing protocol (§3.7) must be followed — mist cure 2-3× daily for first 3 days, no accelerated drying.</td></tr>
+  <tr><td>Timing</td><td>Mock-up must be applied and cured BEFORE any production plastering begins. Allow 28+ days from mock-up application to production start.</td></tr>
+</table>
+
+<h3>4.3 Pre-Mock-Up Conference</h3>
+<p>Before the mock-up is applied, the following parties must meet on site (in person or via video with documentation):</p>
+<table>
+  <tr><th>Party</th><th>Role</th></tr>
+  <tr><td>Plastering contractor (lead plasterer)</td><td>Confirm understanding of mix ratios, application sequence, curing requirements</td></tr>
+  <tr><td>PM (Dimitris Skendo)</td><td>Verify materials on site match spec (§2). Photograph all materials, labels, CE marks.</td></tr>
+  <tr><td>Chairman or delegate (via video acceptable)</td><td>Final sign-off on substrate condition, mock-up location, and acceptable weather forecast</td></tr>
+  <tr><td>Testing lab representative (if available)</td><td>Confirm cube mold placement, bond test locations, curing conditions</td></tr>
+</table>
+
+<h3>4.4 Testing During Mock-Up</h3>
+<table>
+  <tr><th>Test</th><th>Method</th><th>When</th><th>Who Performs</th></tr>
+  <tr><td>Compressive strength (EN 1015-11)</td><td>3 cubes cast during mock-up application — from the same batch as the panel</td><td>Day 0 (at application). Test at 7 days and 28 days.</td><td>ISO 17025 / ESYD accredited laboratory — or contractor casts cubes, lab tests them</td></tr>
+  <tr><td>Bond strength (EN 1015-12 / EN 1542)</td><td>3 pull-off tests on the cured mock-up panel</td><td>Day 28 (after full cure)</td><td>ISO 17025 / ESYD accredited laboratory ONLY — must perform the pull-off test on site</td></tr>
+  <tr><td>Water vapor permeability (EN 1015-19)</td><td>1 test specimen from the mock-up mix</td><td>Day 28</td><td>ISO 17025 / ESYD accredited laboratory</td></tr>
+  <tr><td>Capillary water absorption (EN 1015-18)</td><td>1 test specimen from the mock-up mix</td><td>Day 28</td><td>ISO 17025 / ESYD accredited laboratory</td></tr>
+  <tr><td>Visual inspection</td><td>Check for cracks, hollows, flatness, plumb, efflorescence against §5.2 criteria</td><td>Days 7, 14, 28</td><td>PM (Dimitris) — photograph and log each inspection</td></tr>
+</table>
+
+<h3>4.5 Testing Lab Requirements</h3>
+<table>
+  <tr><td style="width:25%;"><strong>Accreditation</strong></td><td>ISO 17025 accredited by ESYD (Εθνικό Σύστημα Διαπίστευσης) or equivalent ILAC signatory. Contractor's own QC testing is NOT acceptable for LEED.</td></tr>
+  <tr><td><strong>Scope</strong></td><td>Lab must be accredited specifically for EN 1015-11, EN 1015-12, EN 1015-18, EN 1015-19 test methods.</td></tr>
+  <tr><td><strong>Suggested labs (Athens)</strong></td><td>[To be confirmed — e.g., ΕΚΕΦΕ Δημόκριτος, ΕΜΠ Σχολή Πολιτικών Μηχανικών, privately accredited labs]. PM to provide list of 3 for Chairman approval.</td></tr>
+  <tr><td><strong>Reporting</strong></td><td>All test reports must be on lab letterhead, signed by the accredited signatory, with ESYD accreditation number visible.</td></tr>
+</table>
+
+<h3>4.6 Mock-Up Acceptance Criteria</h3>
+<table>
+  <tr><th>Test</th><th>Acceptance</th><th>If Failed</th></tr>
+  <tr><td>Compressive strength (28-day)</td><td>Scratch: CS III (3.5–7.5 N/mm²). Brown: CS II (1.5–5.0 N/mm²). Finish: ≤ Brown strength.</td><td>Adjust mix ratio (more cement = stronger, more lime = weaker). Re-test new mock-up.</td></tr>
+  <tr><td>Bond strength (28-day)</td><td>≥ 0.3 N/mm² (EN 1015-12) or ≥ 0.5 MPa (EN 1542)</td><td>Check substrate preparation (cleanliness, SSD, bonding slurry). Re-test new mock-up.</td></tr>
+  <tr><td>Vapor permeability</td><td>μ-value ≤ 15</td><td>If >15: adjust lime content upward. Re-test.</td></tr>
+  <tr><td>Capillary absorption</td><td>≤ 0.40 kg/(m²·√h)</td><td>If >0.40: check sand grading, adjust mix. Re-test.</td></tr>
+  <tr><td>Visual</td><td>No cracks >0.3mm, no hollows, flatness ≤3mm/2m, plumb ≤3mm/2m, no efflorescence</td><td>Identify root cause (mix, technique, curing). Correct and re-do mock-up.</td></tr>
+</table>
+
+<h3>4.7 Mock-Up Documentation</h3>
+<div class="note-box">
+<strong>Required for LEED file:</strong> (1) Photo of mock-up location before application. (2) Photo during each coat application. (3) Photo of finished mock-up at 28 days with date marker. (4) Mock-Up Record Form signed by PM, plasterer, and Chairman/delegate. (5) All test reports from accredited lab. (6) If mock-up failed and was re-done: document what changed and why. <strong>This forms part of the EQc3.1 Construction IAQ Management Plan evidence.</strong>
+</div>
+</div>
+
+<!-- ========== SECTION 5: QC ========== -->
+<div class="section s-qc" id="s5">
+<div class="section-header"><span class="section-num">5</span><h2>QUALITY CONTROL & ACCEPTANCE CRITERIA</h2></div>
+
+<h3>5.1 Material Testing — During Production</h3>
+<table>
+  <tr><th>Test</th><th>Standard</th><th>Frequency</th><th>Acceptance</th></tr>
+  <tr><td>Compressive strength</td><td>EN 1015-11</td><td>3 cubes per batch per test age (7 + 28 days). One batch per 250 m² or per plastering day, whichever comes first.</td><td>Scratch CS III (3.5–7.5). Brown CS II (1.5–5.0). Finish ≤ Brown.</td></tr>
+  <tr><td>Bond strength (pull-off)</td><td>EN 1015-12 / EN 1542</td><td>3 tests per substrate type, post-28-day cure, on production surfaces (not mock-up)</td><td>≥ 0.3 N/mm² (EN 1015-12) or ≥ 0.5 MPa (EN 1542)</td></tr>
+  <tr><td>Water vapor permeability</td><td>EN 1015-19</td><td>1 test per mix design (from mock-up — additional only if mix changes)</td><td>μ-value ≤ 15</td></tr>
+  <tr><td>Capillary water absorption</td><td>EN 1015-18</td><td>1 test per mix design</td><td>≤ 0.40 kg/(m²·√h)</td></tr>
+</table>
+<div class="info-box"><strong>Testing lab:</strong> ISO 17025 / ESYD accredited ONLY. All test reports must be signed, dated, on letterhead, with accreditation number visible. Contractor's QC does NOT satisfy LEED.</div>
+
+<h3>5.2 Quality Acceptance — Finished Work</h3>
+<table>
+  <tr><th>Criterion</th><th>Test Method</th><th>Acceptance</th><th>Who Checks</th></tr>
+  <tr><td>Surface cracks</td><td>Visual + crack comparator</td><td>No cracks > 0.3mm</td><td>PM — full walk-through</td></tr>
+  <tr><td>Hollow areas / debonding</td><td>Tap test (metal rod)</td><td>No hollow-sounding areas</td><td>PM — 100% tap test</td></tr>
+  <tr><td>Surface flatness</td><td>2m straightedge + feeler gauge</td><td>≤ 3mm deviation per 2m</td><td>PM — spot check 10% of surfaces</td></tr>
+  <tr><td>Plumb (verticality)</td><td>Plumb bob / digital level</td><td>≤ 3mm deviation per 2m</td><td>PM — spot check 10%</td></tr>
+  <tr><td>Efflorescence</td><td>Visual inspection, 28-day mark</td><td>None visible</td><td>PM</td></tr>
+  <tr><td>Coat adhesion</td><td>Visual — no peeling, blistering</td><td>Pass</td><td>PM</td></tr>
+  <tr><td>Coat thickness (total)</td><td>Probe / core sample</td><td>20–30mm total</td><td>PM — spot check</td></tr>
+</table>
+
+<h3>5.3 Non-Conformance Protocol</h3>
+<table>
+  <tr><th>Defect</th><th>Action</th></tr>
+  <tr><td>Isolated cracks <0.3mm</td><td>Accept — monitor. No repair needed.</td></tr>
+  <tr><td>Isolated cracks >0.3mm or hollow areas</td><td>Remove defective area (min 300mm beyond defect). Re-prep substrate. Re-plaster all three coats. Re-inspect.</td></tr>
+  <tr><td>Widespread cracking (>5% of surface)</td><td>STOP WORK. PM + plasterer + Chairman review: identify root cause (mix, curing, substrate). Correct before continuing.</td></tr>
+  <tr><td>Efflorescence at 28 days</td><td>Dry-brush removal. If recurs: investigate moisture source (substrate dampness, waterproofing failure).</td></tr>
+  <tr><td>Compressive strength failure</td><td>Review mix records. Adjust ratios. Re-test. Document variance for LEED file.</td></tr>
+</table>
+</div>
+
+<!-- ========== SECTION 6: WASTE ========== -->
+<div class="section s-waste" id="s6">
+<div class="section-header"><span class="section-num">6</span><h2>WASTE MANAGEMENT & LEED LOGGING</h2></div>
+
+<h3>6.1 Waste Sorting & Handling</h3>
+<table>
+  <tr><th>Waste Type</th><th>Category</th><th>Container</th><th>Handling & Documentation</th></tr>
+  <tr><td>Cement bags (paper/kraft)</td><td>Paper/Cardboard — Recyclable</td><td>Blue bin, lined</td><td>Shake out residue. Store dry. Weigh + log. Recycling receipt required.</td></tr>
+  <tr><td>Lime putty bags (plastic/PE)</td><td>Plastic (LDPE/PE4) — Recyclable</td><td>Yellow bin, lined</td><td>Rinse residue. Store dry. Weigh + log. Recycling receipt required.</td></tr>
+  <tr><td>Sand/marble dust packaging (PP)</td><td>Plastic — Recyclable</td><td>Yellow bin</td><td>Shake out. Fold flat. Weigh + log.</td></tr>
+  <tr><td>Wet plaster droppings</td><td>Inert — Category A</td><td>Inert skip</td><td>Collect daily. Licensed inert facility. Weight/volume + receipt.</td></tr>
+  <tr><td>Dry plaster residue</td><td>Inert — Category A</td><td>Inert skip</td><td>HEPA vacuum / wet sweeping only. Weight estimate.</td></tr>
+  <tr><td>Excess mixed mortar (set)</td><td>Inert — Category A</td><td>Inert skip</td><td>Do not re-temper. Volume + reason logged.</td></tr>
+  <tr><td>Fiberglass mesh offcuts</td><td>General — non-recyclable</td><td>Grey bin</td><td>Small volume. Weight estimate.</td></tr>
+  <tr><td>Corner beads / metal offcuts</td><td>Metal — Recyclable</td><td>Metal bin</td><td>Separate. Weigh + log. Recycler receipt.</td></tr>
+  <tr><td>Additive containers (should be ZERO)</td><td>N/A — prohibited</td><td>N/A</td><td>Flag immediately if found. Incident report.</td></tr>
+</table>
+
+<h3>6.2 MRc7 Diversion Targets</h3>
+<div class="note-box">
+<strong>Target: ≥75% waste diverted from landfill (aim 85%).</strong> Total generated waste target: ≤10–12% of total material weight (~6.0–7.3 t of ~60 t). Diversion path: Paper/cardboard → recycling (100% diversion). Plastic → recycling (100% diversion). Metal → recycling (100% diversion). Inert plaster → licensed inert landfill — counts as diverted if facility processes for aggregate reuse.<br><br>
+<strong>5% procurement contingency</strong> included (~63 t max). If actual usage is lower (smoother surfaces), document variance — improves diversion %.
+</div>
+
+<h3>6.3 Mandatory Daily Waste Log (PM)</h3>
+<table>
+  <tr><th>Date</th><th>Waste Type</th><th>Weight (kg) / Volume (m³)</th><th>Category</th><th>Destination</th><th>Receipt #</th></tr>
+  <tr><td>__/__/__</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>__/__/__</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td colspan="6" style="text-align:center;color:#aaa;">[Add rows for each plastering day. PM signs weekly. Submit to Orpheus within 7 days of completion.]</td></tr>
+</table>
+
+<h3>6.4 MRc3 Recycled Content Tracking</h3>
+<table>
+  <tr><th>Layer</th><th>Material</th><th>Recycled Type</th><th>%</th><th>Actual Tonnes Used</th></tr>
+  <tr><td>Scratch + Brown</td><td>AMETRON sand 0/4 (25% post-consumer C&D)</td><td>Post-consumer</td><td>25%</td><td>[_____] t</td></tr>
+  <tr><td>Finish</td><td>Marble dust (by-product of marble processing)</td><td>Pre-consumer</td><td>100%</td><td>[_____] t</td></tr>
+  <tr><td>All layers</td><td>Lafarge Heracles cement (fly ash/slag SCMs, if applicable)</td><td>Pre-consumer</td><td>[___]%</td><td>[_____] t</td></tr>
+</table>
+</div>
+
+<!-- ========== SECTION 7: HSE ========== -->
+<div class="section s-hse" id="s7">
+<div class="section-header"><span class="section-num">7</span><h2>HEALTH, SAFETY & SITE OPERATIONS</h2></div>
+
+<h3>7.1 Personal Protective Equipment (PPE)</h3>
+<table>
+  <tr><th>Item</th><th>Requirement</th><th>When</th></tr>
+  <tr><td>Gloves</td><td>EN 388 compliant</td><td>Always during mixing and application</td></tr>
+  <tr><td>Safety glasses</td><td>EN 166 compliant</td><td>Always</td></tr>
+  <tr><td>FFP2 dust mask</td><td>EN 149 compliant</td><td>During dry cement/lime mixing. Remove only after mixing area is clear of airborne dust.</td></tr>
+  <tr><td>Steel-toe boots</td><td>EN 345 compliant</td><td>Always on site</td></tr>
+</table>
+
+<h3>7.2 Lime Hazard</h3>
+<div class="warn-box">
+<strong>WARNING: Lime putty is CAUSTIC — pH ~12.4. Causes serious eye damage and skin burns.</strong> All personnel handling lime must be trained on SDS content. Immediate first aid: flush eyes with running water for 15 minutes minimum — seek medical attention. Skin contact: remove contaminated clothing, wash with water and soap.
+</div>
+<p>Eye wash station + running water must be accessible within 30 seconds of the mixing area. First aid kit on site. SDS binder in site office with Safety Data Sheets for ALL materials (cement, lime, sand, marble dust, mesh, beads) per REACH/CLP regulations.</p>
+
+<h3>7.3 Mixing Area</h3>
+<p>Must be well-ventilated. No confined-space mixing of dry cement/lime without FFP2 mask and mechanical ventilation. Mixing area to be cordoned off from other trades during dry mixing operations. Clean water source within 10m.</p>
+
+<h3>7.4 HVAC Protection</h3>
+<div class="info-box">
+<strong>EQc3.1 REQUIREMENT:</strong> Seal ALL duct openings, return grilles, and ventilation shafts with polyethylene sheeting and tape BEFORE any wet plastering begins. Photograph before sealing + after sealing. Remove seals only after plaster is fully cured and dust has settled (minimum 28 days). <strong>These photos are mandatory for the IAQ documentation package.</strong>
+</div>
+
+<h3>7.5 Construction IAQ Management Plan (EQc3.1 — 1 Point)</h3>
+<p><strong>PM must sign this plan BEFORE plastering begins.</strong> The plan must include evidence of:</p>
+<table>
+  <tr><th>Element</th><th>Evidence Required</th></tr>
+  <tr><td>Dust control</td><td>Photos: wet cutting only, HEPA vacuum on site, no dry sweeping</td></tr>
+  <tr><td>Moisture/mold prevention</td><td>Curing logs: daily T + RH readings. Photos: damp burlap if RH <40%</td></tr>
+  <tr><td>HVAC protection</td><td>Photos: all ducts + grilles sealed BEFORE plastering</td></tr>
+  <tr><td>Material storage</td><td>Photos: cement/lime dry, off ground, under cover</td></tr>
+  <tr><td>Sequencing</td><td>Photos: plastering before finish trades (paint, flooring)</td></tr>
+  <tr><td>Waste management</td><td>Photos: labeled bins in designated area</td></tr>
+</table>
+<p>Compile all photos into one dated + signed PDF: <strong>GALATSI-EQc3.1-IAQ-PLAN-YYYYMMDD.pdf</strong></p>
+</div>
+
+<!-- ========== SECTION 8: LEED ========== -->
+<div class="section s-leed" id="s8">
+<div class="section-header"><span class="section-num">8</span><h2>LEED CREDITS, PREREQUISITES & POINTS</h2></div>
+
+<h3>8.1 LEED v4 BD+C: NC Prerequisites — Plaster Scope</h3>
+<table>
+  <tr><th>Prerequisite</th><th>Code</th><th>Requirement</th><th>How Met</th></tr>
+  <tr><td>Storage & Collection of Recyclables</td><td>MRp1</td><td>Designated area for recyclable materials collection</td><td>Paper/plastic/metal/inert bins on site (§6.1)</td></tr>
+  <tr><td>Construction Activity Pollution Prevention</td><td>SSp1</td><td>ESC plan: sediment control, dust control</td><td>No dry sweeping. Wet cutting. HEPA vacuum. Inert waste to licensed facility. Substrate survey (§3.1).</td></tr>
+  <tr><td>Minimum IAQ Performance</td><td>EQp1</td><td>3 ACH ventilation during construction</td><td>Mechanical ventilation during + 24h after plastering</td></tr>
+  <tr><td>C&D Waste Management Planning</td><td>MR prereq</td><td>Pre-construction waste plan + post-construction report</td><td>§6 is the execution plan. Pre-construction plan filed separately.</td></tr>
+</table>
+
+<h3>8.2 LEED Credits — Plaster Contribution</h3>
+<table>
+  <tr><th>Credit</th><th>Code</th><th>Points Available</th><th>Plaster Contribution</th><th>Basis</th></tr>
+  <tr><td>Low-Emitting Materials</td><td>EQc2</td><td class="center">3</td><td class="center"><span class="point-card">1.0</span></td><td>All materials inherently non-emitting (no polymers, no organic additives)</td></tr>
+  <tr><td>Enhanced IAQ Strategies</td><td>EQc1</td><td class="center">2</td><td class="center"><span class="point-card">0.5</span></td><td>3 ACH ventilation, post-construction flush-out coordination</td></tr>
+  <tr><td>EPDs</td><td>MRc2</td><td class="center">2</td><td class="center"><span class="point-card">0.5</span></td><td>Cement (Cembureau/Lafarge) + lime (EuLA) industry EPDs</td></tr>
+  <tr><td>Sourcing of Raw Materials</td><td>MRc3</td><td class="center">2</td><td class="center"><span class="point-card">0.5</span></td><td>Local <100km + 25% recycled C&D sand + marble by-product</td></tr>
+  <tr><td>Material Ingredients</td><td>MRc4</td><td class="center">1</td><td class="center"><span class="point-card">0.5</span></td><td>HPDs from cement + lime suppliers</td></tr>
+  <tr><td>Construction IAQ Management</td><td>EQc3.1</td><td class="center">1</td><td class="center"><span class="point-card">1.0</span></td><td>Full IAQ plan: dust control, HVAC protection, mist curing, waste</td></tr>
+  <tr><td>Construction Waste Diversion</td><td>MRc7</td><td class="center">2</td><td class="center"><span class="point-card">0.5</span></td><td>Inert waste sorted, ≥75% diversion target</td></tr>
+  <tr style="background:var(--dark);color:white;font-weight:bold;"><td colspan="2">TOTAL PLASTER CONTRIBUTION</td><td class="center">~13</td><td class="center">~4.0</td><td>Out of ~80 needed for Platinum</td></tr>
+</table>
+
+<h3>8.3 EQc2 — Inherently Non-Emitting Strategy</h3>
+<div class="info-box">
+<strong>Compliance path:</strong> Cement-lime plaster composed exclusively of mineral/inorganic materials (cement, lime, sand, marble dust, water). NO polymer additives, NO organic fibers. Qualifies as inherently non-emitting IF supported by chemical ingredient inventory from cement and lime suppliers confirming no organic additives at ≥0.1% (1,000 ppm). This avoids VOC chamber testing entirely.<br><br>
+<strong>Critical document:</strong> Chemical ingredient inventory from Lafarge Hellas and lime putty supplier. Without this, the EQc2 claim fails.
+</div>
+
+<h3>8.4 EPD & HPD Tracking</h3>
+<table>
+  <tr><th>Material</th><th>Supplier</th><th>EPD</th><th>HPD</th><th>Status</th></tr>
+  <tr><td>Grey cement</td><td>Lafarge Hellas</td><td>Product EPD or Cembureau industry EPD</td><td>HPD per HPD Open Standard</td><td>Request</td></tr>
+  <tr><td>White cement</td><td>Lafarge Hellas</td><td>Same</td><td>Same</td><td>Request</td></tr>
+  <tr><td>Lime putty</td><td>Epichromatiki / Emporodomiki</td><td>EuLA industry EPD</td><td>HPD per HPD Open Standard</td><td>Request</td></tr>
+  <tr><td>Sand 0/4</td><td>AMETRON</td><td>N/A — local source</td><td>N/A</td><td>Location letter</td></tr>
+  <tr><td>Marble dust</td><td>Attica</td><td>N/A — by-product</td><td>N/A</td><td>Location letter</td></tr>
+</table>
+<p style="font-size:11px;">LEED v4 MRc2 requires 20 products from 5 manufacturers with EPDs. Plaster contributes 3 products (cement, lime, sand). MRc4 requires HPD/Declare/C2C for 20 products from 5 manufacturers.</p>
+</div>
+
+<!-- ========== SECTION 9: DOCS ========== -->
+<div class="section s-docs" id="s9">
+<div class="section-header"><span class="section-num">9</span><h2>DOCUMENTATION PACKAGE — PRE & POST WORK</h2></div>
+
+<h3>9.1 Pre-Work Submittals (DUE BEFORE PLASTERING BEGINS)</h3>
+<table>
+  <tr><th style="width:3%;">#</th><th>Item</th><th>Owner</th><th>Credit</th><th>✓</th></tr>
+  <tr><td>1</td><td>Product data sheets (cement, lime, sand, marble dust, mesh, beads)</td><td>Plasterer → Dimitris</td><td><span class="leed-badge">EQc2</span> <span class="leed-badge">MRc2</span> <span class="leed-badge">MRc3</span> <span class="leed-badge">MRc4</span></td><td></td></tr>
+  <tr><td>2</td><td>Chemical ingredient inventory — no organic additives ≥0.1% / 1,000 ppm</td><td>Supplier → Dimitris → Orpheus</td><td><span class="leed-badge leed-badge-crit">EQc2 CRITICAL</span></td><td></td></tr>
+  <tr><td>3</td><td>Declaration of NO polymer additives — signed by plasterer</td><td>Plasterer → Dimitris</td><td><span class="leed-badge">EQc2</span></td><td></td></tr>
+  <tr><td>4</td><td>SDS for all materials (REACH/CLP)</td><td>Supplier → Dimitris</td><td>H&S + LEED file</td><td></td></tr>
+  <tr><td>5</td><td>Supplier names, quarry/manufacturing locations</td><td>Dimitris → Orpheus</td><td><span class="leed-badge">MRc3</span></td><td></td></tr>
+  <tr><td>6</td><td>EPD requests sent to Lafarge + lime supplier</td><td>Dimitris → Orpheus</td><td><span class="leed-badge">MRc2</span></td><td></td></tr>
+  <tr><td>7</td><td>HPD requests sent to Lafarge + lime supplier</td><td>Dimitris → Orpheus</td><td><span class="leed-badge">MRc4</span></td><td></td></tr>
+  <tr><td>8</td><td>C&D sand contaminant tests (gypsum <1%, asbestos-free, heavy metals)</td><td>AMETRON → Dimitris</td><td><span class="leed-badge">MRc3</span></td><td></td></tr>
+  <tr><td>9</td><td>Mix design submitted (ratios + target EN 998-1 CS class)</td><td>Plasterer → Dimitris</td><td>Quality</td><td></td></tr>
+  <tr><td>10</td><td>Substrate condition survey — photos, class map, sign-off</td><td>Dimitris + plasterer</td><td><span class="leed-badge">SSp1</span></td><td></td></tr>
+  <tr><td>11</td><td>Construction IAQ Management Plan — signed by PM</td><td>Dimitris</td><td><span class="leed-badge">EQc3.1</span></td><td></td></tr>
+  <tr><td>12</td><td>Pre-construction C&D Waste Management Plan</td><td>Dimitris → Orpheus</td><td>MR prereq</td><td></td></tr>
+  <tr><td>13</td><td>Confirm ZERO Revinex / SikaFiber / polymer additives on site</td><td>Dimitris</td><td><span class="leed-badge leed-badge-crit">EQc2</span></td><td></td></tr>
+</table>
+
+<h3>9.2 Post-Work Submittals (DUE WITHIN 7 DAYS OF COMPLETION)</h3>
+<table>
+  <tr><th style="width:3%;">#</th><th>Item</th><th>Owner</th><th>Credit</th><th>✓</th></tr>
+  <tr><td>1</td><td>Waste diversion log — daily weights, categories, receipts</td><td>Dimitris → Orpheus</td><td><span class="leed-badge">MRc7</span></td><td></td></tr>
+  <tr><td>2</td><td>Mix design records — actual ratios, water, batch notes</td><td>Plasterer → Dimitris</td><td>Quality</td><td></td></tr>
+  <tr><td>3</td><td>Compressive strength — EN 1015-11, 7 + 28 day cubes, ISO 17025 lab</td><td>Lab → Dimitris</td><td><span class="leed-badge">MRc2</span></td><td></td></tr>
+  <tr><td>4</td><td>Bond strength — EN 1015-12, post-28-day, ISO 17025 lab</td><td>Lab → Dimitris</td><td>Quality</td><td></td></tr>
+  <tr><td>5</td><td>Curing logs — daily T, RH, mist frequency</td><td>Plasterer → Dimitris</td><td><span class="leed-badge">EQc3.1</span></td><td></td></tr>
+  <tr><td>6</td><td>Photographic record — BEFORE: substrate, ducts, storage, bins → DURING: mixing, application, curing → AFTER: finished surfaces</td><td>Dimitris</td><td><span class="leed-badge">EQc3.1</span> <span class="leed-badge">SSp1</span></td><td></td></tr>
+  <tr><td>7</td><td>Mock-up panel record — photo + acceptance sign-off + test results</td><td>Dimitris</td><td><span class="leed-badge">EQc3.1</span></td><td></td></tr>
+  <tr><td>8</td><td>pH + moisture test results — pre-paint, pH <10, moisture <8%</td><td>Plasterer → Dimitris</td><td>Quality</td><td></td></tr>
+  <tr><td>9</td><td>EPDs received — cement + lime → submit to Orpheus for LEED file</td><td>Dimitris → Orpheus</td><td><span class="leed-badge">MRc2</span></td><td></td></tr>
+  <tr><td>10</td><td>HPDs received — cement + lime → submit to Orpheus for LEED file</td><td>Dimitris → Orpheus</td><td><span class="leed-badge">MRc4</span></td><td></td></tr>
+</table>
+</div>
+
+<!-- ========== SECTION 10: STANDARDS ========== -->
+<div class="section s-standards" id="s10">
+<div class="section-header"><span class="section-num">10</span><h2>STANDARDS REFERENCED</h2></div>
+<table>
+  <tr><th>Standard</th><th>Title</th><th>Relevance</th></tr>
+  <tr><td>EN 998-1</td><td>Mortar — Rendering/plastering mortar</td><td>Plaster performance specification</td></tr>
+  <tr><td>EN 197-1</td><td>Cement — Composition, conformity</td><td>Cement quality</td></tr>
+  <tr><td>EN 459-1</td><td>Building lime — Definitions, conformity</td><td>Lime quality</td></tr>
+  <tr><td>EN 13139</td><td>Aggregates for mortar</td><td>Sand/marble dust quality</td></tr>
+  <tr><td>EN 1008</td><td>Mixing water for concrete</td><td>Water quality</td></tr>
+  <tr><td>EN 1015-11</td><td>Mortar — Compressive/flexural strength</td><td>Compressive strength testing</td></tr>
+  <tr><td>EN 1015-12</td><td>Mortar — Adhesive strength</td><td>Bond strength testing</td></tr>
+  <tr><td>EN 1015-18</td><td>Mortar — Capillary water absorption</td><td>Water absorption testing</td></tr>
+  <tr><td>EN 1015-19</td><td>Mortar — Water vapor permeability</td><td>Vapor permeability testing</td></tr>
+  <tr><td>EN 13696</td><td>Wood-based panels — Mechanical properties</td><td>Mesh reinforcement reference</td></tr>
+  <tr><td>EN 1542</td><td>Products for repair — Pull-off test</td><td>Alternative bond test method</td></tr>
+  <tr><td>CDPH SM v1.2</td><td>California Dept. Public Health Standard Method</td><td>VOC emissions (if polymer-modified)</td></tr>
+  <tr><td>AgBB</td><td>German Committee for Health Evaluation</td><td>European VOC alternative</td></tr>
+  <tr><td>SCAQMD Rule 1168</td><td>Adhesive & Sealant Applications</td><td>VOC limits for bonding agents</td></tr>
+  <tr><td>EU 2004/42/EC</td><td>Decopaint Directive</td><td>VOC limits (does not apply to plaster)</td></tr>
+  <tr><td>ISO 17025</td><td>Testing laboratories — Accreditation</td><td>Lab accreditation requirement</td></tr>
+  <tr><td>ISO 14025</td><td>Type III Environmental Declarations</td><td>EPD standard for MRc2</td></tr>
+  <tr><td>REACH / CLP</td><td>EU chemical regulations</td><td>SDS and hazard labeling</td></tr>
+</table>
+</div>
+
+<!-- ========== SECTION 11: PROCESS MAP ========== -->
+<div class="section s-execution" id="s11">
+<div class="section-header"><span class="section-num">11</span><h2>STEP-BY-STEP PROCESS MAP — CONTRACT TO COMPLETION</h2></div>
+
+<p>This process map shows every step of the Galatsi plastering job in sequence, with parallel paths and photo documentation checkpoints. Follow phases in order. Steps marked <strong>📷</strong> require photographic documentation for LEED. Steps marked <strong>📋</strong> require a signed document or form.</p>
+
+<style>
+  .phase { border: 2px solid #ddd; border-radius: 8px; margin-bottom: 18px; overflow: hidden; }
+  .phase-header { padding: 14px 18px; font-weight: bold; font-size: 15px; color: white; display: flex; align-items: center; gap: 10px; }
+  .phase-0 { background: #666; }
+  .phase-1 { background: var(--brown); }
+  .phase-2 { background: var(--orange); }
+  .phase-3 { background: var(--purple); }
+  .phase-4 { background: var(--green); }
+  .phase-5 { background: var(--blue); }
+  .phase-6 { background: var(--dark); }
+  .phase-body { padding: 16px; }
+  .step { display: flex; align-items: flex-start; padding: 8px 12px; margin-bottom: 6px; border-radius: 4px; background: #f9f9f9; border-left: 3px solid #ccc; }
+  .step-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #555; color: white; font-weight: bold; font-size: 12px; margin-right: 10px; flex-shrink: 0; }
+  .step-content { flex: 1; font-size: 13px; line-height: 1.5; }
+  .step-content strong { color: #333; }
+  .step .tag { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px; margin-left: 4px; }
+  .tag-photo { background: #e3f2fd; color: var(--blue); }
+  .tag-doc { background: #fffde6; color: #997a00; }
+  .tag-critical { background: #fef0f0; color: var(--red); }
+  .tag-wait { background: #f3e5f5; color: var(--purple); }
+  .parallel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+  .parallel-label { font-size: 11px; color: #666; margin-bottom: 6px; font-weight: bold; text-transform: uppercase; }
+  .arrow { text-align: center; color: #999; font-size: 18px; margin: 4px 0; }
+</style>
+
+<!-- PHASE 0 -->
+<div class="phase">
+<div class="phase-header phase-0">PHASE 0 — PRE-CONTRACT (Duration: 1–2 days)</div>
+<div class="phase-body">
+<div class="step"><span class="step-num">1</span><div class="step-content"><strong>Chairman approves this document (v4.1).</strong> All sections reviewed and locked. No further changes to materials, mix ratios, or prohibited list.</div></div>
+<div class="step"><span class="step-num">2</span><div class="step-content"><strong>PM (Dimitris) identifies plastering contractor.</strong> Present this document to contractor. Confirm they agree to all terms — especially LEED cooperation (§1.4), prohibited materials (§1.5), curing (§3.7), and waste logging (§6.3).</div></div>
+<div class="step"><span class="step-num">3</span><div class="step-content"><strong>📋 CONTRACT SIGNED (§11).</strong> All parties sign: Chairman, PM, Contractor, Witness. <span class="tag tag-critical">BLOCKING</span> — nothing proceeds without signed contract.</div></div>
+</div>
+</div>
+<div class="arrow">▼</div>
+
+<!-- PHASE 1 -->
+<div class="phase">
+<div class="phase-header phase-1">PHASE 1 — PROCUREMENT & DOCUMENT COLLECTION (Duration: 1–3 weeks)</div>
+<div class="phase-body">
+<div class="parallel">
+<div>
+<div class="parallel-label">TRACK A: PM (Dimitris) — Documents</div>
+<div class="step"><span class="step-num">4</span><div class="step-content"><strong>📷 Request product data sheets</strong> from Lafarge (cement), lime supplier, AMETRON (sand), marble dust supplier.<span class="tag tag-doc">PDS</span></div></div>
+<div class="step"><span class="step-num">5</span><div class="step-content"><strong>📋 Request chemical ingredient inventory</strong> from Lafarge + lime supplier — no organic additives ≥0.1% / 1,000 ppm. <span class="tag tag-critical">CRITICAL</span> — this unlocks LEED EQc2.</div></div>
+<div class="step"><span class="step-num">6</span><div class="step-content"><strong>📋 Send EPD requests</strong> to Lafarge (product EPD or Cembureau) and lime supplier (EuLA industry EPD).</div></div>
+<div class="step"><span class="step-num">7</span><div class="step-content"><strong>📋 Send HPD requests</strong> to Lafarge + lime supplier (HPD per HPD Open Standard).</div></div>
+<div class="step"><span class="step-num">8</span><div class="step-content"><strong>📋 Request SDS</strong> for all materials per REACH/CLP.</div></div>
+<div class="step"><span class="step-num">9</span><div class="step-content"><strong>📋 Request supplier location letters</strong> — confirm quarry/manufacturing within 100km of Galatsi for MRc3 local sourcing.</div></div>
+<div class="step"><span class="step-num">10</span><div class="step-content"><strong>📋 Request C&D sand contaminant test</strong> from AMETRON — gypsum <1%, asbestos-free, heavy metals screen.</div></div>
+</div>
+<div>
+<div class="parallel-label">TRACK B: PM — Material Ordering</div>
+<div class="step"><span class="step-num">11</span><div class="step-content"><strong>Order materials per §2.4 total order table.</strong><br>• 255 bags Lafarge Heracles grey cement<br>• 55 bags Lafarge Heracles white cement<br>• 390 bags lime putty CL 90-S<br>• 39 tonnes sand 0/4 (AMETRON)<br>• 5 tonnes marble dust</div></div>
+<div class="step"><span class="step-num">12</span><div class="step-content"><strong>Order ancillary materials</strong> — fiberglass mesh (alkali-resistant), corner beads (galvanized steel), expansion joint profiles.</div></div>
+<div class="step"><span class="step-num">13</span><div class="step-content"><strong>📷 Photograph all material deliveries</strong> — labels, CE marks, batch numbers visible. Store materials per §3.9.</div></div>
+<div class="step"><span class="step-num">14</span><div class="step-content"><strong>Set up site infrastructure</strong> — waste bins (blue/yellow/metal/grey/inert skip per §6.1), eye wash station, mixing area, SDS binder.</div></div>
+<div class="step"><span class="step-num">15</span><div class="step-content"><strong>Identify ISO 17025 / ESYD accredited testing lab</strong> for mock-up and production testing (§4.5). Obtain quote and confirm availability.</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="arrow">▼</div>
+
+<!-- PHASE 2 -->
+<div class="phase">
+<div class="phase-header phase-2">PHASE 2 — PRE-WORK PREPARATION (Duration: 3–5 days)</div>
+<div class="phase-body">
+<div class="step"><span class="step-num">16</span><div class="step-content"><strong>📋 Verify ALL pre-work submittals (§9.1) received.</strong> Check off items 1–13 in the checklist. <span class="tag tag-critical">BLOCKING</span> — do not proceed until all 13 are checked.</div></div>
+<div class="step"><span class="step-num">17</span><div class="step-content"><strong>📷 PHOTO: HVAC ducts and grilles sealed.</strong> Take wide + close-up photos. Date-stamp. These go into the IAQ Plan PDF.</div></div>
+<div class="step"><span class="step-num">18</span><div class="step-content"><strong>📷 PHOTO: Material storage area.</strong> Cement on pallets, dry, covered. Lime putty sealed. Sand/marble dust covered. Labeled bins in place.</div></div>
+<div class="step"><span class="step-num">19</span><div class="step-content"><strong>📷 PHOTO: Substrate BEFORE — every area.</strong> Wide shots of all walls, ceilings, beam infills. These are the "before" evidence for LEED SSp1.</div></div>
+<div class="step"><span class="step-num">20</span><div class="step-content"><strong>📋 Conduct substrate survey (§3.1) with plasterer.</strong> Classify every area as A/B/C. Photograph each class. Mark zones on sketch map. Both sign the survey.</div></div>
+<div class="step"><span class="step-num">21</span><div class="step-content"><strong>Repair Class B/C substrates.</strong> Cracks filled. Efflorescence removed. Loose material removed. Structural engineer assessment for Class C. <span class="tag tag-wait">MAY DELAY</span> if structural repairs needed.</div></div>
+<div class="step"><span class="step-num">22</span><div class="step-content"><strong>📋 Signed IAQ Management Plan</strong> (§7.5). PM signs. File as GALATSI-EQc3.1-IAQ-PLAN-[DATE].pdf.</div></div>
+<div class="step"><span class="step-num">23</span><div class="step-content"><strong>📋 Confirm zero prohibited materials on site</strong> (§2.5). Physical walk-through by PM. Document with photo + signed confirmation.</div></div>
+</div>
+</div>
+<div class="arrow">▼</div>
+
+<!-- PHASE 3 -->
+<div class="phase">
+<div class="phase-header phase-3">PHASE 3 — MOCK-UP PANEL (Duration: 28 days cure — START EARLY)</div>
+<div class="phase-body">
+<div class="step"><span class="step-num">24</span><div class="step-content"><strong>📷 PHOTO: Mock-up location BEFORE application.</strong> Mark area with tape. Photograph.</div></div>
+<div class="step"><span class="step-num">25</span><div class="step-content"><strong>Pre-mock-up conference (§4.3).</strong> Plasterer + PM + Chairman (or delegate) + lab rep. Confirm materials, mix ratios, weather forecast. Document attendees.</div></div>
+<div class="step"><span class="step-num">26</span><div class="step-content"><strong>Apply mock-up panel — all 3 coats (§4.2).</strong> 2m × 2m on each substrate type. Use exact materials, exact ratios, exact tools. <strong>Cast 3 compressive strength cubes from the same batch.</strong></div></div>
+<div class="step"><span class="step-num">27</span><div class="step-content"><strong>📷 PHOTO: Each coat application.</strong> Scratch, brown, finish — one photo per coat with date marker.</div></div>
+<div class="step"><span class="step-num">28</span><div class="step-content"><strong>Cure mock-up per §3.7 (28 days).</strong> Mist 2–3× daily for first 3 days. Log T + RH daily. <span class="tag tag-critical">DO NOT ACCELERATE DRYING.</span></div></div>
+<div class="step"><span class="step-num">29</span><div class="step-content"><strong>📋 Day 7: Visual inspection.</strong> PM checks mock-up for cracks, hollows, flatness, plumb. Photograph. Log findings.</div></div>
+<div class="step"><span class="step-num">30</span><div class="step-content"><strong>📋 Day 28: Final mock-up inspection + testing.</strong> ISO 17025 lab performs: (a) compressive strength on cubes — 7-day + 28-day, (b) bond pull-off test on mock-up, (c) vapor permeability, (d) capillary absorption. All per §4.4.</div></div>
+<div class="step"><span class="step-num">31</span><div class="step-content"><strong>✅ MOCK-UP ACCEPTED?</strong> If ALL tests pass (§4.6) → proceed to Phase 4. <strong>❌ If ANY test fails</strong> → identify root cause, adjust, re-do mock-up from Step 24. <span class="tag tag-critical">BLOCKING</span></div></div>
+</div>
+</div>
+<div class="arrow">▼</div>
+
+<!-- PHASE 4 -->
+<div class="phase">
+<div class="phase-header phase-4">PHASE 4 — PRODUCTION PLASTERING (Duration: 4–6 weeks)</div>
+<div class="phase-body">
+<div class="parallel">
+<div>
+<div class="parallel-label">TRACK A: Daily Plastering</div>
+<div class="step"><span class="step-num">32</span><div class="step-content"><strong>Check weather forecast.</strong> Verify: Tmax <35°C, Tmin >5°C, wind <30 km/h, no rain forecast. <span class="tag tag-critical">STOP WORK</span> if any limit exceeded (§3.6).</div></div>
+<div class="step"><span class="step-num">33</span><div class="step-content"><strong>Prepare substrate for day's area.</strong> Dampen to SSD. Apply bonding slurry if smooth concrete.</div></div>
+<div class="step"><span class="step-num">34</span><div class="step-content"><strong>Mix scratch coat per §2.1</strong> — 1:1:5 (cement:lime putty:sand). <strong>📋 Log batch</strong> — actual quantities, water added, batch time.</div></div>
+<div class="step"><span class="step-num">35</span><div class="step-content"><strong>Apply scratch coat — 10mm.</strong> Roughen surface. <strong>📷 Photo during application.</strong></div></div>
+<div class="step"><span class="step-num">36</span><div class="step-content"><strong>Cast 3 compressive strength cubes</strong> from this batch. Label with date + batch #. Store per EN 1015-11 curing.</div></div>
+<div class="step"><span class="step-num">37</span><div class="step-content"><strong>Mist cure scratch coat.</strong> Log T + RH. Cure 24h minimum.</div></div>
+<div class="step"><span class="step-num">38</span><div class="step-content"><strong>Mix brown coat per §2.2</strong> — 1:1:6. Log batch.</div></div>
+<div class="step"><span class="step-num">39</span><div class="step-content"><strong>Apply brown coat — 12mm.</strong> Straighten to line. <strong>📷 Photo.</strong></div></div>
+<div class="step"><span class="step-num">40</span><div class="step-content"><strong>Mist cure brown coat.</strong> Log T + RH. Cure 24h minimum.</div></div>
+<div class="step"><span class="step-num">41</span><div class="step-content"><strong>Mix finish coat per §2.3</strong> — 1:1:5 white cement:lime putty:marble dust.</div></div>
+<div class="step"><span class="step-num">42</span><div class="step-content"><strong>Apply finish coat — 4mm.</strong> Smooth with marble float. <strong>📷 Photo.</strong></div></div>
+<div class="step"><span class="step-num">43</span><div class="step-content"><strong>Begin full curing protocol (§3.7).</strong> Mist 2–3× daily for 3 days minimum. Continue logging T + RH daily.</div></div>
+</div>
+<div>
+<div class="parallel-label">TRACK B: Concurrent — Logging & Testing</div>
+<div class="step"><span class="step-num">W1</span><div class="step-content"><strong>📋 DAILY: Waste log (§6.3).</strong> Weigh each waste category. Record destination + receipt #. PM signs weekly.</div></div>
+<div class="step"><span class="step-num">W2</span><div class="step-content"><strong>📋 DAILY: Curing log.</strong> T ambient, RH, mist frequency, any issues.</div></div>
+<div class="step"><span class="step-num">W3</span><div class="step-content"><strong>📋 DAILY: Mix batch records.</strong> Cement/lime/sand/water per batch. Any adjustments noted.</div></div>
+<div class="step"><span class="step-num">W4</span><div class="step-content"><strong>📷 DAILY: Photo documentation.</strong> Work in progress, curing surfaces, waste bins, weather conditions.</div></div>
+<div class="step"><span class="step-num">T1</span><div class="step-content"><strong>Day 7: Test compressive strength cubes</strong> from first production batch. ISO 17025 lab. <strong>If CS class fails → adjust mix immediately.</strong></div></div>
+<div class="step"><span class="step-num">T2</span><div class="step-content"><strong>Day 14: Midpoint visual inspection.</strong> PM walks all completed areas. Check for early cracks, hollows. Photograph.</div></div>
+<div class="step"><span class="step-num">T3</span><div class="step-content"><strong>Day 28: Final inspection (§5.2).</strong> PM — 100% tap test, crack check, flatness/plumb spot checks. No efflorescence. Document all findings.</div></div>
+<div class="step"><span class="step-num">T4</span><div class="step-content"><strong>Day 28: Bond pull-off tests</strong> on production surfaces. ISO 17025 lab. ≥0.3 N/mm².</div></div>
+<div class="step"><span class="step-num">T5</span><div class="step-content"><strong>Day 28: Compressive strength</strong> — 28-day cubes. ISO 17025 lab. Confirm CS II/III targets.</div></div>
+<div class="step"><span class="step-num">T6</span><div class="step-content"><strong>pH + moisture testing.</strong> pH <10, moisture <8%. OK to proceed to paint. <span class="tag tag-critical">DO NOT PAINT BEFORE THIS.</span></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="arrow">▼</div>
+
+<!-- PHASE 5 -->
+<div class="phase">
+<div class="phase-header phase-5">PHASE 5 — POST-WORK DOCUMENTATION (Duration: 7 days after completion)</div>
+<div class="phase-body">
+<div class="step"><span class="step-num">44</span><div class="step-content"><strong>📋 Complete waste diversion log</strong> (§6.3). Compile all daily entries. Calculate total diversion %. Target ≥75%. Attach all recycling/disposal receipts.</div></div>
+<div class="step"><span class="step-num">45</span><div class="step-content"><strong>📋 Compile mix design records</strong> — all batch logs, water additions, adjustments.</div></div>
+<div class="step"><span class="step-num">46</span><div class="step-content"><strong>📋 Collect all test reports from ISO 17025 lab</strong> — compressive (7+28 day), bond, vapor permeability, capillary absorption. Verify signed + accreditation number.</div></div>
+<div class="step"><span class="step-num">47</span><div class="step-content"><strong>📋 Compile curing logs</strong> — all daily T/RH readings, mist frequency records.</div></div>
+<div class="step"><span class="step-num">48</span><div class="step-content"><strong>📷 Compile photographic record</strong> — organize by phase: before (substrate, ducts, storage), during (mixing, application, curing), after (finished surfaces). Create PDF with date captions.</div></div>
+<div class="step"><span class="step-num">49</span><div class="step-content"><strong>📋 Mock-up record</strong> — photo + acceptance letter + all test results.</div></div>
+<div class="step"><span class="step-num">50</span><div class="step-content"><strong>📋 pH + moisture test results</strong> — confirm readiness for paint.</div></div>
+<div class="step"><span class="step-num">51</span><div class="step-content"><strong>📋 Collect EPD and HPD documents</strong> — Lafarge + lime supplier. File with original letterhead/accreditation.</div></div>
+</div>
+</div>
+<div class="arrow">▼</div>
+
+<!-- PHASE 6 -->
+<div class="phase">
+<div class="phase-header phase-6">PHASE 6 — LEED SUBMISSION (Duration: 3–5 days compilation)</div>
+<div class="phase-body">
+<div class="step"><span class="step-num">52</span><div class="step-content"><strong>Orpheus compiles complete LEED package.</strong> All documents from Phases 1–5 assembled into one indexed PDF. Photos captioned. Test reports linked to credits. Waste diversion % calculated. MRc3 recycled content % calculated per layer.</div></div>
+<div class="step"><span class="step-num">53</span><div class="step-content"><strong>Internal review.</strong> Orpheus + Chairman review package. Check all credits claimed vs evidence provided. Verify no gaps in documentation chain.</div></div>
+<div class="step"><span class="step-num">54</span><div class="step-content"><strong>📋 Package submitted to GBCI</strong> as part of LEED v4 BD+C: NC certification submission (Project ID: 1000216750 — Emanatis Residence Galatsi). Plaster documentation complete. ✅</div></div>
+</div>
+</div>
+
+<div class="note-box" style="margin-top:20px;">
+<strong>QUICK REFERENCE — CRITICAL PATH:</strong> Contract signed (Step 3) → Chemical inventory received (Step 5) → All 13 pre-work docs checked (Step 16) → Mock-up ACCEPTED (Step 31) → Production plastering (Steps 32–43) → Post-work docs compiled (Steps 44–51) → Orpheus LEED submission (Step 52). <strong>Any delay in the critical path delays the entire plaster scope.</strong>
+</div>
+
+</div>
+
+<!-- ========== SECTION 12: SIGNATURES ========== -->
+<div class="section s-contract" id="s12">
+<div class="section-header"><span class="section-num">12</span><h2>SIGNATURES & ACCEPTANCE</h2></div>
+
+<div class="signature-block">
+  <h3>LEED Project ID: 1000216750 — Emanatis Residence Galatsi<br><br>By signing below, all parties acknowledge they have read, understood, and accept ALL requirements contained in this document — including but not limited to: materials and mix ratios (§2), execution and curing (§3), mock-up and testing (§4), quality acceptance criteria (§5), waste management and daily logging (§6), health and safety (§7), LEED documentation cooperation (§8–9), and prohibited materials penalties (§1.5).</h3>
+
+  <div class="sig-row">
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label"><strong>Emmanuel Anassis</strong><br>Chairman, Emanatis Luxury Living PC<br>Date: _______________</div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label"><strong>Dimitris Skendo</strong><br>Project Manager<br>Date: _______________</div>
+    </div>
+  </div>
+
+  <div class="sig-row">
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label"><strong>[Name]</strong><br>Plastering Contractor<br>Company / VAT / License: _______________<br>Date: _______________</div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div class="sig-label"><strong>[Name]</strong><br>Witness<br>Date: _______________</div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+  Galatsi Plaster — LEED Platinum v4 BD+C: NC Complete Submission Package &nbsp;|&nbsp; v4.1 &nbsp;|&nbsp; 2026-06-24<br>
+  LEED Project ID: 1000216750 — Emanatis Residence Galatsi<br>
+  Prepared by Orpheus Aurelius, Chief of Staff — Emanatis Group<br>
+  This document replaces all previous versions (v1.0–v4.0). Prior versions are superseded.
+</div>
+
+</body>
+</html>

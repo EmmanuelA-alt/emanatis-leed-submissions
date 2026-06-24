@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Γαλάτσι Σοβάς — Πακέτο Υποβολής LEED Platinum v4.1</title>
+<style>
+  :root {
+    --green: #2d7a4f; --brown: #8b6f3f; --blue: #3260a8; --red: #c0392b;
+    --dark: #0d3b2e; --light: #f5f5f5; --yellow: #fffde6; --yellow-border: #e6c200;
+    --orange: #d4883a; --purple: #6b4ba8;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #1a1a1a; margin: 0; padding: 0; background: #f0f2f5; line-height: 1.5; }
+  
+  .cover { background: var(--dark); color: white; padding: 80px 40px; text-align: center; }
+  .cover h1 { font-size: 32px; margin: 0 0 8px 0; letter-spacing: 1px; }
+  .cover h2 { font-size: 18px; font-weight: normal; color: #a8d4c4; margin: 0 0 24px 0; }
+  .cover .meta { font-size: 13px; color: #8ab4a0; line-height: 1.8; }
+  .cover .version-badge { display: inline-block; background: white; color: var(--dark); padding: 4px 14px; border-radius: 4px; font-weight: bold; font-size: 14px; margin-bottom: 16px; }
+  
+  .toc { max-width: 900px; margin: 30px auto; background: white; border-radius: 8px; padding: 30px 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .toc h2 { color: var(--dark); font-size: 18px; margin: 0 0 16px 0; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 8px; font-size: 14px; }
+  .toc a { color: var(--dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .toc .toc-tag { display: inline-block; font-size: 10px; padding: 1px 8px; border-radius: 3px; margin-left: 8px; color: white; font-weight: bold; }
+  
+  .content { max-width: 900px; margin: 0 auto; padding: 0 20px 40px; }
+  .section { background: white; border-radius: 8px; padding: 30px 40px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .section-header { display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid; }
+  .section-header h2 { margin: 0; font-size: 20px; }
+  .section-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; color: white; font-weight: bold; font-size: 16px; margin-right: 12px; flex-shrink: 0; }
+  
+  .s-contract .section-header { border-color: var(--dark); }
+  .s-contract .section-num { background: var(--dark); }
+  .s-materials .section-header { border-color: var(--brown); }
+  .s-materials .section-num { background: var(--brown); }
+  .s-execution .section-header { border-color: var(--orange); }
+  .s-execution .section-num { background: var(--orange); }
+  .s-mockup .section-header { border-color: var(--purple); }
+  .s-mockup .section-num { background: var(--purple); }
+  .s-qc .section-header { border-color: var(--blue); }
+  .s-qc .section-num { background: var(--blue); }
+  .s-waste .section-header { border-color: var(--green); }
+  .s-waste .section-num { background: var(--green); }
+  .s-hse .section-header { border-color: var(--red); }
+  .s-hse .section-num { background: var(--red); }
+  .s-leed .section-header { border-color: var(--dark); }
+  .s-leed .section-num { background: var(--dark); }
+  .s-docs .section-header { border-color: var(--green); }
+  .s-docs .section-num { background: var(--green); }
+  .s-standards .section-header { border-color: #666; }
+  .s-standards .section-num { background: #666; }
+  
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 14px; }
+  th { background: #f0f0f0; text-align: left; padding: 8px 10px; font-weight: bold; border-bottom: 2px solid #ccc; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 8px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+  td.qty { font-weight: bold; white-space: nowrap; }
+  td.center { text-align: center; }
+  td.prohibited { color: var(--red); font-weight: bold; }
+  .leed-badge { display: inline-block; background: var(--green); color: white; font-size: 10px; padding: 2px 8px; border-radius: 3px; margin: 1px; white-space: nowrap; }
+  .leed-badge-crit { background: var(--red); }
+  .note-box { background: var(--yellow); border-left: 4px solid var(--yellow-border); padding: 10px 14px; margin-top: 12px; font-size: 12px; line-height: 1.6; }
+  .note-box strong { color: #997a00; }
+  .info-box { background: #e8f0fe; border-left: 4px solid var(--blue); padding: 10px 14px; margin-top: 12px; font-size: 12px; line-height: 1.6; }
+  .info-box strong { color: #1a4a8a; }
+  .warn-box { background: #fef0f0; border-left: 4px solid var(--red); padding: 10px 14px; margin-top: 12px; font-size: 12px; line-height: 1.6; }
+  .warn-box strong { color: var(--red); }
+  
+  h3 { font-size: 15px; margin: 20px 0 10px 0; }
+  p { font-size: 13px; margin: 6px 0 12px 0; }
+  
+  .signature-block { border: 2px dashed #ccc; padding: 24px; margin-top: 20px; border-radius: 6px; }
+  .signature-block h3 { margin: 0 0 16px 0; font-size: 14px; color: var(--dark); }
+  .sig-row { display: flex; gap: 40px; margin-top: 20px; }
+  .sig-col { flex: 1; }
+  .sig-line { border-bottom: 1px solid #333; height: 30px; margin-bottom: 6px; }
+  .sig-label { font-size: 12px; color: #666; }
+  
+  .total-order { background: var(--dark); color: white; border-radius: 8px; padding: 20px; margin-top: 20px; }
+  .total-order h3 { color: white; margin: 0 0 12px 0; font-size: 15px; }
+  .total-order table { color: white; }
+  .total-order table th { background: #145a45; color: white; border-bottom: 1px solid #2a8a6a; }
+  .total-order table td { border-bottom: 1px solid #1a4a38; color: white; }
+  .total-order td.qty { color: #6bd4a8; }
+  
+  .coat-card { border-radius: 6px; padding: 16px; margin-bottom: 16px; }
+  .coat-green { border-left: 4px solid var(--green); background: #f6fcf9; }
+  .coat-brown { border-left: 4px solid var(--brown); background: #faf7f2; }
+  .coat-blue { border-left: 4px solid var(--blue); background: #f5f8fd; }
+  .coat-card h3 { margin: 0 0 10px 0; font-size: 15px; }
+  .coat-green h3 { color: var(--green); }
+  .coat-brown h3 { color: var(--brown); }
+  .coat-blue h3 { color: var(--blue); }
+  
+  .point-card { display: inline-block; background: var(--green); color: white; padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 13px; margin-right: 8px; margin-bottom: 8px; }
+  
+  .footer { text-align: center; padding: 30px; font-size: 11px; color: #888; }
+  
+  @media print {
+    body { background: white; }
+    .section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+    .toc { page-break-after: always; }
+    .content { max-width: 100%; padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="version-badge">v4.1 — 2026-06-24</div>
+  <h1>ΓΑΛΑΤΣΙ ΣΟΒΑΣ</h1>
+  <h2>Πλήρες Πακέτο Υποβολής LEED Platinum v4 BD+C: NC</h2>
+  <div class="meta">
+    <strong>Project ID: 1000216750</strong> &nbsp;|&nbsp; <strong>Τίτλος: Emanatis Residence Galatsi</strong><br>
+    Σύστημα Αξιολόγησης: LEED v4 BD+C: NC &nbsp;|&nbsp; Στόχος: Platinum<br>
+    Έργο: Ιπείρου 22, Γαλάτσι, Αθήνα, Ελλάδα<br>
+    Αντικείμενο: 1.012 m² — Υπόγειο, Αποθήκη, Κλιμακοστάσιο, Διάδρομοι<br>
+    Σύστημα Σοβά Τσιμέντου-Άσβεστου Τριών Στρώσεων &nbsp;|&nbsp; Ανάμειξη Επί Τόπου &nbsp;|&nbsp; Χωρίς Προσθήκες Πολυμερών<br>
+    Συντάχθηκε από: Orpheus Aurelius, Chief of Staff — Emanatis Group
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h2>ΠΙΝΑΚΑΣ ΠΕΡΙΕΧΟΜΕΝΩΝ</h2>
+  <ol>
+    <li><a href="#s1">Σύμβαση & Πεδίο Εργασιών</a><span class="toc-tag" style="background:var(--dark);">Σύμβαση</span></li>
+    <li><a href="#s2">Υλικά, Προϊόντα & Σχεδιασμός Μείγματος</a><span class="toc-tag" style="background:var(--brown);">Υλικά</span></li>
+    <li><a href="#s3">Απαιτήσεις Εκτέλεσης</a><span class="toc-tag" style="background:var(--orange);">Εκτέλεση</span></li>
+    <li><a href="#s4">Πίνακας Δοκιμής (Mock-Up) & Πρωτόκολλο Ελέγχου</a><span class="toc-tag" style="background:var(--purple);">Έλεγχος</span></li>
+    <li><a href="#s5">Έλεγχος Ποιότητας & Κριτήρια Αποδοχής</a><span class="toc-tag" style="background:var(--blue);">ΕΠ</span></li>
+    <li><a href="#s6">Διαχείριση Αποβλήτων & Καταγραφή LEED</a><span class="toc-tag" style="background:var(--green);">Απόβλητα</span></li>
+    <li><a href="#s7">Υγεία, Ασφάλεια & Λειτουργίες Εργοταξίου</a><span class="toc-tag" style="background:var(--red);">Υ&Α</span></li>
+    <li><a href="#s8">Πιστώσεις LEED, Προαπαιτούμενα & Πόντοι</a><span class="toc-tag" style="background:var(--dark);">LEED</span></li>
+    <li><a href="#s9">Πακέτο Τεκμηρίωσης — Πριν & Μετά τις Εργασίες</a><span class="toc-tag" style="background:var(--green);">Έγγραφα</span></li>
+    <li><a href="#s10">Πρότυπα που Αναφέρονται</a><span class="toc-tag" style="background:#666;">Πρότυπα</span></li>
+    <li><a href="#s11">Χάρτης Διαδικασίας Βήμα-Βήμα — Από Σύμβαση σε Ολοκλήρωση</a><span class="toc-tag" style="background:#d4883a;">Διαδικασία</span></li>
+    <li><a href="#s12">Υπογραφές & Αποδοχή</a><span class="toc-tag" style="background:var(--dark);">Υπογραφή</span></li>
+  </ol>
+</div>
+
+<div class="content">
+
+<!-- ========== SECTION 1: CONTRACT ========== -->
+<div class="section s-contract" id="s1">
+<div class="section-header"><span class="section-num">1</span><h2>ΣΥΜΒΑΣΗ & ΠΕΔΙΟ ΕΡΓΑΣΙΩΝ</h2></div>
+
+<h3>1.1 Ταυτοποίηση Έργου</h3>
+<table>
+  <tr><td style="width:25%;"><strong>Έργο</strong></td><td>Emanatis Luxury Living PC — Ανάπτυξη Γαλατσίου, Ιπείρου 22, Γαλάτσι, Αθήνα 11146</td></tr>
+  <tr><td><strong>LEED Project ID</strong></td><td>1000216750</td></tr>
+  <tr><td><strong>LEED Τίτλος</strong></td><td>Emanatis Residence Galatsi</td></tr>
+  <tr><td><strong>Σύστημα Αξιολόγησης</strong></td><td>LEED v4 BD+C: NC — Στόχος: Platinum</td></tr>
+  <tr><td><strong>Πελάτης</strong></td><td>Emanatis Luxury Living PC, εκπροσωπούμενο από τον Emmanuel Anassis (Πρόεδρο) &amp; Dimitris Skendo (Διευθυντή Έργου)</td></tr>
+  <tr><td><strong>Αναδόχος</strong></td><td>[Όνομα Αναδόχου Σοβάτισματος / Εταιρεία / ΑΦΜ / Άδεια]</td></tr>
+  <tr><td><strong>Ημερομηνία</strong></td><td>[Ημερομηνία Υπογραφής]</td></tr>
+  <tr><td><strong>Ημερομηνία Έναρξης</strong></td><td>29 Ιουνίου 2026</td></tr>
+  <tr><td><strong>Ημερομηνία Ολοκλήρωσης</strong></td><td>Υπό Διευκρίνιση</td></tr>
+</table>
+
+<h3>1.2 Πεδίο Εργασιών</h3>
+<table>
+  <tr><th>Περιοχή</th><th>m²</th><th>Τιμή (€/m²)</th><th>Υποσύνολο</th></tr>
+  <tr><td>Κλιμακοστάσιο (σκάλες)</td><td>96</td><td>€18</td><td>€1.728</td></tr>
+  <tr><td>Μηχανοστάσιο (κλιματοστάσιο)</td><td>96</td><td>€18</td><td>€1.728</td></tr>
+  <tr><td>Ταβάνι — δοκαράκι</td><td>56</td><td>€18</td><td>€1.008</td></tr>
+  <tr><td>Τοίχοι</td><td>108</td><td>€18</td><td>€1.944</td></tr>
+  <tr><td>Δοκαράκι</td><td>29</td><td>€18</td><td>€522</td></tr>
+  <tr><td>Αποθήκη</td><td>144</td><td>€15</td><td>€2.160</td></tr>
+  <tr><td>Διάδρομοι</td><td>43</td><td>€15</td><td>€645</td></tr>
+  <tr><td>Δωμάτιο</td><td>29</td><td>€15</td><td>€435</td></tr>
+  <tr><td>Σαλόνι υπογείου</td><td>50</td><td>€15</td><td>€750</td></tr>
+  <tr><td>Ταβάνι υπογείου</td><td>120</td><td>€15</td><td>€1.800</td></tr>
+  <tr style="font-weight:bold;background:#f0f0f0;"><td>ΥΠΟΣΥΝΟΛΟ Α (€18/m²)</td><td>626</td><td></td><td>€11.268</td></tr>
+  <tr style="font-weight:bold;background:#f0f0f0;"><td>ΥΠΟΣΥΝΟΛΟ Β (€15/m²)</td><td>386</td><td></td><td>€5.790</td></tr>
+  <tr style="font-weight:bold;background:var(--dark);color:white;"><td>ΣΥΝΟΛΟ</td><td>1.012 m²</td><td></td><td>€16.000</td></tr>
+</table>
+
+<p><strong>Οι εργασίες περιλαμβάνουν:</strong> Όλη την εργασία, τα εργαλεία και τον εξοπλισμό για σοβά τσιμέντου-άσβεστου τριών στρώσεων ανάμειξης επί τόπου (σοβάς) σε προετοιμασμένα υποστρώματα — πεταχτό (10mm) + λάσπωμα (12mm) + μαρμάρωμα (4mm) = 26mm συνολικά. Προετοιμασία επιφανειών σύμφωνα με §3, εγκατάσταση πλέγματος και γωνιακών προφίλ σύμφωνα με §3, διαλογή αποβλήτων σύμφωνα με §6, ωρίμανση σύμφωνα με §3.</p>
+
+<p><strong>Οι εργασίες δεν περιλαμβάνουν:</strong> Βαφές/επιστρώσεις, μεμβράνες στεγανοποίησης, θερμομόνωση/ηχομόνωση, επισκευή δομικού σκυροδέματος (υποστρώματα Κατηγορίας C σύμφωνα με §3).</p>
+
+<p><strong>Χρονοδιάγραμμα:</strong> Έναρξη 29 Ιουνίου 2026 — Ολοκλήρωση υπό διευκρίνιση. Εκτιμώμενη διάρκεια: 1,5–2 μήνες ενεργού σοβατίσματος.</p>
+
+<p><strong>Υλικά που παρέχονται από τον Πελάτη:</strong> Όλα τα υλικά σύμφωνα με §2 — τσιμέντο (Lafarge Heracles), ασβεστόπολτος (CL 90-S), άμμος 0/4, μαρμαρόσκονη. Αγοράζονται από την Emanatis, παραδίδονται στο εργοτάξιο.</p>
+
+<p><strong>Υλικά που παρέχονται από τον Ανάδοχο:</strong> Νερό ανάμειξης, πλέγμα ινουάλου, γωνιακά προφίλ, υλικό αρμών διαστολής, υλικά στρώσης συγκόλλησης. Ο Ανάδοχος να επιβεβαιώσει τα υλικά στο εργοτάξιο πριν την έναρξη.</p>
+
+<h3>1.3 Όροι Πληρωμής</h3>
+<p>Συνολική αξία σύμβασης: <strong>€16.000</strong> (σταθερή τιμή). Πρόγραμμα πληρωμών: [π.χ., 30% κατά την υπογραφή σύμβασης + 40% σε ενδιάμεση επιθεώρηση + 30% κατά την τελική αποδοχή σύμφωνα με §5.2]. Όλες οι πληρωμές υπόκεινται σε ικανοποιητική επιθεώρηση από τον Διευθυντή Έργου ή τον Πρόεδρο.</p>
+
+<h3>1.4 Συνεργασία Τεκμηρίωσης LEED (Συμβατική Υποχρέωση)</h3>
+<p>Ο Ανάδοχος αναγνωρίζει ότι το έργο αυτό pursuei πιστοποίηση LEED Platinum v4 BD+C: NC (Project ID: 1000216750 — Emanatis Residence Galatsi). Ο Ανάδοχος έχει συμβατική υποχρέωση να:</p>
+<table>
+  <tr><td style="width:3%;">α)</td><td>Υποβάλει όλη την τεκμηρίωση προ-εργασίας που αναφέρεται στο §9.1 ΠΡΙΝ ξεκινήσει οποιαδήποτε εργασία σοβατίσματος.</td></tr>
+  <tr><td>β)</td><td>Διατηρεί το ημερήσιο αρχείο αποβλήτων (§6) — υπογεγραμμένο εβδομαδιαία από τον Διευθυντή Έργου. Η μη τήρηση του αρχείου αποτελεί παραβίαση.</td></tr>
+  <tr><td>γ)</td><td>Επιτρέπει και διευκολύνει δοκιμές εργαστηρίου διαπιστευμένου ISO 17025 / ESYD (§5.1) — συμπεριλαμβανομένου πίνακα δοκιμής (§4), κύβων αντοχής σε θλίψη και δοκιμών πρόσφυσης.</td></tr>
+  <tr><td>δ)</td><td>Υποβάλει όλη την τεκμηρίωση μετα-εργασίας (§9.2) εντός 7 ημερών από την ολοκλήρωση του σοβατίσματος.</td></tr>
+  <tr><td>ε)</td><td>Επιτρέπει φωτογραφική τεκμηρίωση όλων των σταδίων — προετοιμασία υποστρώματος, αποθήκευση υλικών, ανάμειξη, εφαρμογή, ωρίμανση, διαχείριση αποβλήτων — για LEED IAQ και αποδείξεις αποβλήτων.</td></tr>
+  <tr><td>στ)</td><td>Συμμορφώνεται με το Σχέδιο Διαχείρισης Εσωτερικής Ποιότητας Αέρα Κατασκευής (§7.5) — συμπεριλαμβανομένης της σφράγισης αγωγών HVAC, χρήσης μόνο ηλεκτρικής σκούπας HEPA / υγρού καθαρισμού, και πρωτοκόλλου ωρίμανσης με ψεκασμό.</td></tr>
+</table>
+
+<h3>1.5 Απαγορευμένα Υλικά — Ρήτρα Ποινών</h3>
+<table>
+  <tr><th>Απαγορευμένο Υλικό</th><th>Συνέπεια εάν Βρεθεί στο Εργοτάξιο</th></tr>
+  <tr><td>Revinex (NEOTEX copolymer emulsion) ή οποιαδήποτε προσθήκη πολυμερούς</td><td>Άμεση απομάκρυνση από το εργοτάξιο με δαπάνες του Αναδόχου. Πλήρες κόστος αντικατάστασης υλικών σοβά (εάν έχουν εφαρμοστεί) βαρύνει τον Ανάδοχο. Οποιαδήποτε καθυστέρηση πιστοποίησης LEED ή απώλεια πιστώσεων αποδοτική σε χρήση πολυμερών = ευθύνη Αναδόχου.</td></tr>
+  <tr><td>SikaFiber ή οποίες ίνες πολυπροπυλενίου/πολυμερούς</td><td>Όπως παραπάνω.</td></tr>
+  <tr><td>SBR / latex / VAE / EVA συνδετικά ή προσθέσεις</td><td>Όπως παραπάνω.</td></tr>
+  <tr><td>Πρώτες ύλες ή στεγανωτικά με βάση διαλύτες</td><td>Όπως παραπάνω.</td></tr>
+</table>
+
+<h3>1.6 Συμμόρφωση με Πρωτόκολλο Ωρίμανσης</h3>
+<p>Ο Ανάδοχος πρέπει να ακολουθήσει το πρωτόκολλο ωρίμανσης του §3.7 (ψεκασμός 2–3× ημερησίως τις πρώτες 3 ημέρες, υγρό λινό εάν RH &lt;40%, χωρίς σοβάτισμα 11:00–16:00 σε αιχμή καλοκαιριού). Η μη τήρηση της ωρίμανσης αποτελεί ελάττωμα ποιότητας και λόγο απόρριψης σύμφωνα με §5.2.</p>
+
+<h3>1.7 Αποδοχή</h3>
+<p>Τελική αποδοχή σύμφωνα με κριτήρια ποιότητας §5.2. Κανένα ραγάσμα &gt;0,3mm, κανένα κοίλο σημείο, επιπεδότητα ≤3mm ανά 2m, κάθετοτητα ≤3mm ανά 2m, καθόλου ανθιζόν άλατα, αντοχή πρόσφυσης ≥0,3 N/mm².</p>
+
+<h3>1.8 Εφαρμοστέο Δίκαιο</h3>
+<p>Αυτή η σύμβαση διέπεται από τους νόμους της Ελληνικής Δημοκρατίας. Οποιαδήποτε διαφορά θα επιλύεται στα δικαστήρια της Αθήνας.</p>
+</div>
+
+<!-- ========== SECTION 2: MATERIALS ========== -->
+<div class="section s-materials" id="s2">
+<div class="section-header"><span class="section-num">2</span><h2>ΥΛΙΚΑ, ΠΡΟΪΟΝΤΑ & ΣΧΕΔΙΑΣΜΟΣ ΜΕΙΓΜΑΤΟΣ</h2></div>
+
+<h3>2.1 Στρώση 1 — Πεταχτό — 10mm — Στόχος CS III</h3>
+<div class="coat-card coat-green">
+<table>
+  <tr><th style="width:20%;">Υλικό</th><th>Προϊόν</th><th>Πρότυπο</th><th>Ποσότητα</th><th>Αναλογία (όγκος)</th></tr>
+  <tr><td>Γκρι τσιμέντο</td><td>Lafarge Heracles (CEM II/B-LL 32.5N προτιμώμενο)</td><td>EN 197-1</td><td class="qty">125 σάκοι × 25kg (3,1 t)</td><td class="center">1 μέρος</td></tr>
+  <tr><td>Ασβεστόπολτος</td><td>CL 90-S (Epichromatiki / Emporodomiki)</td><td>EN 459-1</td><td class="qty">160 σάκοι × 19kg (3,0 t)</td><td class="center">1 μέρος</td></tr>
+  <tr><td>Άμμος 0/4</td><td>AMETRON (75% λατομείου + 25% ανακυκλωμένο C&D)</td><td>EN 13139</td><td class="qty">17 τόνοι</td><td class="center">5 μέρη</td></tr>
+  <tr><td>Νερό</td><td>Πόσιμο</td><td>EN 1008</td><td class="qty">~1.500 L</td><td class="center">Έως εργασιμότητα</td></tr>
+  <tr><td>Ίνες</td><td colspan="4" class="prohibited">ΚΑΜΙΑ</td></tr>
+  <tr><td>Προσθήκες πολυμερούς</td><td colspan="4" class="prohibited">ΚΑΜΙΑ</td></tr>
+</table>
+</div>
+<div class="note-box">
+<strong>Εφαρμογή:</strong> Αναμειγνύετε τσιμέντο + άμμο στεγνά → προσθέστε ασβεστόπολτο → προσθέστε νερό σιγά-σιγά → αναμειγνύετε 3–5 λεπτά. Εφαρμόστε 10mm. Τραχύαντε την επιφάνεια με τρίφτη. Ωρίμανση 24h ελάχιστο. Ο ασβεστόπολτος περιέχει ~40% νερό — μειώστε το προστιθέμενο νερό αναλόγως. <span class="leed-badge">EQc2</span> <span class="leed-badge">MRc2</span> <span class="leed-badge">MRc3</span>
+</div>
+
+<h3>2.2 Στρώση 2 — Λάσπωμα — 12mm — Στόχος CS II</h3>
+<div class="coat-card coat-brown">
+<table>
+  <tr><th style="width:20%;">Υλικό</th><th>Προϊόν</th><th>Πρότυπο</th><th>Ποσότητα</th><th>Αναλογία (όγκος)</th></tr>
+  <tr><td>Γκρι τσιμέντο</td><td>Lafarge Heracles (CEM II/B-LL 32.5N προτιμώμενο)</td><td>EN 197-1</td><td class="qty">130 σάκοι × 25kg (3,2 t)</td><td class="center">1 μέρος</td></tr>
+  <tr><td>Ασβεστόπολτος</td><td>CL 90-S</td><td>EN 459-1</td><td class="qty">165 σάκοι × 19kg (3,1 t)</td><td class="center">1 μέρος</td></tr>
+  <tr><td>Άμμος 0/4</td><td>AMETRON (75% λατομείου + 25% ανακυκλωμένο C&D)</td><td>EN 13139</td><td class="qty">22 τόνοι</td><td class="center">6 μέρη</td></tr>
+  <tr><td>Νερό</td><td>Πόσιμο</td><td>EN 1008</td><td class="qty">~1.800 L</td><td class="center">Έως εργασιμότητα</td></tr>
+  <tr><td>Ίνες</td><td colspan="4" class="prohibited">ΚΑΜΙΑ</td></tr>
+  <tr><td>Προσθήκες πολυμερούς</td><td colspan="4" class="prohibited">ΚΑΜΙΑ</td></tr>
+</table>
+</div>
+<div class="note-box">
+<strong>Εφαρμογή:</strong> Ίδια διαδικασία ανάμειξης. Εφαρμόστε 12mm. Ευθυγραμμίστε με κανόνα. Ωρίμανση 24h ελάχιστο πριν το μαρμάρωμα. Αντοχή ≤ πεταχτό (CS II &lt; CS III) — σωστή κλίση αντοχής διατηρείται.
+</div>
+
+<h3>2.3 Στρώση 3 — Μαρμάρωμα — 4mm — ≤ Στόχος CS II</h3>
+<div class="coat-card coat-blue">
+<table>
+  <tr><th style="width:20%;">Υλικό</th><th>Προϊόν</th><th>Πρότυπο</th><th>Ποσότητα</th><th>Αναλογία (όγκος)</th></tr>
+  <tr><td>Λευκό τσιμέντο</td><td>Lafarge Heracles White</td><td>EN 197-1</td><td class="qty">55 σάκοι × 25kg (1,4 t)</td><td class="center">1 μέρος</td></tr>
+  <tr><td>Ασβεστόπολτος</td><td>CL 90-S</td><td>EN 459-1</td><td class="qty">65 σάκοι × 19kg (1,2 t)</td><td class="center">1 μέρος</td></tr>
+  <tr><td>Μαρμαρόσκονη</td><td>(100% φυσική, Αττική)</td><td>EN 13139</td><td class="qty">5 τόνοι</td><td class="center">5 μέρη</td></tr>
+  <tr><td>Νερό</td><td>Πόσιμο</td><td>EN 1008</td><td class="qty">~600 L</td><td class="center">Έως εργασιμότητα</td></tr>
+  <tr><td>Άμμος / ίνες / πολυμερή</td><td colspan="4" class="prohibited">ΚΑΜΙΑ — μόνο μαρμαρόσκονη. Όχι ανακυκλωμένη άμμο. Όχι ίνες.</td></tr>
+</table>
+</div>
+<div class="note-box">
+<strong>Εφαρμογή:</strong> Χρησιμοποιήστε ΛΕΥΚΟ τσιμέντο για καθαρό φινίρισμα (παραδοσιακό μαρμάρωμα). Η μαρμαρόσκονη αντικαθιστά την άμμο — λεία, πυκνή επιφάνεια. Εφαρμόστε 4mm, λειάνετε με μαρμαροτελετή. Αντοχή ≤ λάσπωμα — σωστή κλίση αντοχής διατηρείται. <span class="leed-badge">EQc2</span> <span class="leed-badge">MRc3</span> (προϊόν παραγωγής μαρμάρου, ανακυκλωμένο pre-consumer)
+</div>
+
+<h3>2.4 Συνολική Παραγγελία Υλικών</h3>
+<div class="total-order">
+<table>
+  <tr><th>Υλικό</th><th>Προϊόν</th><th>Ποσότητα</th><th>Βάρος</th></tr>
+  <tr><td>Γκρι τσιμέντο (σάκοι 25kg)</td><td>Lafarge Heracles</td><td class="qty">255 σάκοι</td><td>6,3 t</td></tr>
+  <tr><td>Λευκό τσιμέντο (σάκοι 25kg)</td><td>Lafarge Heracles White</td><td class="qty">55 σάκοι</td><td>1,4 t</td></tr>
+  <tr><td>Ασβεστόπολτος (σάκοι 19kg)</td><td>CL 90-S</td><td class="qty">390 σάκοι</td><td>7,4 t</td></tr>
+  <tr><td>Ά
